@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ABLY 여성의류 상의 카테고리 상품 목록">
+  <title>ABLY | 여성의류 상의</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="category-page">
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="ABLY 홈">
+        <img src="assets/images/logo/logo.png" alt="ABLY">
+      </a>
+
+      <nav class="site-header__nav" aria-label="주요 메뉴">
+        <ul class="gnb">
+          <li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li>
+          <li class="gnb__item"><a class="gnb__link is-active" href="category.html">카테고리</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#event">이벤트</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__tools">
+        <form class="search-form" role="search" aria-label="상품 검색">
+          <label class="sr-only" for="site-search">검색어</label>
+          <input id="site-search" name="search" type="search" placeholder="하나만 사도 무료배송" autocomplete="off">
+          <button class="icon-button" type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+          </button>
+        </form>
+        <button class="icon-button site-header__icon" type="button" aria-label="마이페이지">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0m12-13a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+        </button>
+        <button class="icon-button site-header__icon" type="button" aria-label="장바구니">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 13H7L6 8Zm3 0a3 3 0 1 1 6 0"/></svg>
+        </button>
+        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
+      <a href="index.html#hero">오늘의 발견</a>
+      <a class="is-active" href="category.html">카테고리</a>
+      <a href="index.html#style">브랜드</a>
+      <a href="index.html#event">이벤트</a>
+    </nav>
+  </header>
+
+  <main id="main" class="category-main">
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <ol>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="category.html">카테고리</a></li>
+        <li><a href="category.html">여성의류</a></li>
+        <li aria-current="page">상의</li>
+      </ol>
+    </nav>
+
+    <section class="category-hero" aria-labelledby="category-page-title">
+      <div class="category-hero__copy">
+        <h1 id="category-page-title">상의</h1>
+        <p>에이블리만의 감성으로 선별한 다양한 스타일을 매일 업데이트되는 신상품으로 만나보세요.</p>
+      </div>
+
+      <div class="category-hero__banner">
+        <div class="swiper category-hero__swiper" data-category-hero-swiper>
+          <div class="swiper-wrapper">
+            <article class="swiper-slide category-hero__slide">
+              <div>
+                <p>Daily Style, ABLY</p>
+                <h2>오늘의 취향<br><strong>에이블리</strong>에서</h2>
+                <span>지금 가장 사랑받는 스타일을 만나보세요.</span>
+              </div>
+              <img src="assets/images/category/category_banner.jpg" alt="분홍 셔츠를 입은 모델이 있는 상의 카테고리 배너">
+            </article>
+            <article class="swiper-slide category-hero__slide">
+              <div>
+                <p>New Season</p>
+                <h2>가볍게 입는<br><strong>신상 상의</strong></h2>
+                <span>블라우스부터 니트까지 한 번에 둘러보세요.</span>
+              </div>
+              <img src="assets/images/trend/trend_main_02.png" alt="신상 상의 스타일 배너">
+            </article>
+          </div>
+          <div class="category-hero__count"><span data-category-current>1</span> / <span data-category-total>2</span></div>
+          <div class="category-hero__nav">
+            <button class="round-button category-hero-prev" type="button" aria-label="이전 배너">←</button>
+            <button class="round-button category-hero-next" type="button" aria-label="다음 배너">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="circle-category" aria-label="여성의류 세부 카테고리">
+      <button class="circle-category__item is-active" type="button" aria-pressed="true">
+        <img src="assets/images/category/cate_top.png" alt="">
+        <span>상의</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_onepiece.png" alt="">
+        <span>원피스</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_bottom.png" alt="">
+        <span>하의</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_outer.png" alt="">
+        <span>아우터</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_skirt.png" alt="">
+        <span>스커트</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_knit.png" alt="">
+        <span>니트</span>
+      </button>
+      <button class="circle-category__item" type="button" aria-pressed="false">
+        <img src="assets/images/category/cate_blouse.png" alt="">
+        <span>블라우스</span>
+      </button>
+    </nav>
+
+    <section class="product-section" aria-labelledby="product-title">
+      <h2 class="sr-only" id="product-title">상의 상품 목록</h2>
+
+      <div class="product-toolbar">
+        <p class="product-toolbar__count">총 1,234개</p>
+        <div class="product-sort" role="group" aria-label="상품 정렬">
+          <button class="is-active" type="button" aria-pressed="true">추천순</button>
+          <button type="button" aria-pressed="false">신상품순</button>
+          <button type="button" aria-pressed="false">낮은가격순</button>
+          <button type="button" aria-pressed="false">높은가격순</button>
+          <button type="button" aria-pressed="false">할인율순</button>
+          <button type="button" aria-pressed="false">리뷰많은순</button>
+        </div>
+        <div class="product-toolbar__view">
+          <button class="product-select" type="button" aria-label="페이지당 상품 수 선택">120개씩 보기 <span aria-hidden="true">⌄</span></button>
+          <button class="view-button is-active" type="button" aria-label="큰 그리드 보기" aria-pressed="true">▦</button>
+          <button class="view-button" type="button" aria-label="작은 그리드 보기" aria-pressed="false">▦</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_01.jpg" alt="로맨틱 릴리즈 블라우스"></figure>
+            <div class="product-card__body"><p class="product-card__brand">디어로이</p><h3>로맨틱 릴리즈 블라우스</h3><strong>29,800원</strong><p class="product-card__rating">★ 4.8 (1,234)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><span class="badge product-card__badge">NEW</span><img src="assets/images/category/product_02.jpg" alt="브리즈 쉬폰 원피스"></figure>
+            <div class="product-card__body"><p class="product-card__brand">어나더데몬</p><h3>브리즈 쉬폰 원피스</h3><strong>39,800원</strong><p class="product-card__rating">★ 4.9 (856)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_03.jpg" alt="데일리 스트라이프 셔츠"></figure>
+            <div class="product-card__body"><p class="product-card__brand">베이글녀</p><h3>데일리 스트라이프 셔츠</h3><strong>28,000원</strong><p class="product-card__rating">★ 4.7 (3,210)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_04.jpg" alt="데일리 코튼 니트 가디건"></figure>
+            <div class="product-card__body"><p class="product-card__brand">포틀베이</p><h3>데일리 코튼 니트 가디건</h3><strong>24,800원</strong><p class="product-card__rating">★ 4.8 (2,112)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><span class="badge product-card__badge">BEST</span><img src="assets/images/category/product_05.jpg" alt="오버핏 싱글 자켓"></figure>
+            <div class="product-card__body"><p class="product-card__brand">히든무드</p><h3>오버핏 싱글 자켓</h3><strong>59,800원</strong><p class="product-card__rating">★ 4.9 (745)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_06.jpg" alt="플라워 레이스 원피스"></figure>
+            <div class="product-card__body"><p class="product-card__brand">로지어</p><h3>플라워 레이스 원피스</h3><strong>42,800원</strong><p class="product-card__rating">★ 4.8 (1,276)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_07.jpg" alt="케이블 라운드 니트"></figure>
+            <div class="product-card__body"><p class="product-card__brand">멜로티</p><h3>케이블 라운드 니트</h3><strong>27,800원</strong><p class="product-card__rating">★ 4.9 (988)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_08.jpg" alt="크롭 트위드 자켓"></figure>
+            <div class="product-card__body"><p class="product-card__brand">어텀</p><h3>크롭 트위드 자켓</h3><strong>52,000원</strong><p class="product-card__rating">★ 4.8 (1,102)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_09.jpg" alt="베이직 U넥 티셔츠"></figure>
+            <div class="product-card__body"><p class="product-card__brand">포유</p><h3>베이직 U넥 티셔츠</h3><strong>16,000원</strong><p class="product-card__rating">★ 4.7 (3,420)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_10.jpg" alt="릴리즈 프릴 블라우스"></figure>
+            <div class="product-card__body"><p class="product-card__brand">소프트룸</p><h3>릴리즈 프릴 블라우스</h3><strong>29,000원</strong><p class="product-card__rating">★ 4.8 (1,876)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_11.jpg" alt="스퀘어 퍼프 블라우스"></figure>
+            <div class="product-card__body"><p class="product-card__brand">제이드모어</p><h3>스퀘어 퍼프 블라우스</h3><strong>32,000원</strong><p class="product-card__rating">★ 4.7 (1,023)</p></div>
+          </a>
+        </article>
+        <article class="product-card">
+          <a href="#">
+            <figure class="product-card__media"><img src="assets/images/category/product_12.jpg" alt="루즈핏 스트라이프 셔츠"></figure>
+            <div class="product-card__body"><p class="product-card__brand">데이오프</p><h3>루즈핏 스트라이프 셔츠</h3><strong>25,800원</strong><p class="product-card__rating">★ 4.8 (1,342)</p></div>
+          </a>
+        </article>
+      </div>
+
+      <nav class="pagination" aria-label="상품 목록 페이지">
+        <a href="#" aria-label="이전 페이지">‹</a>
+        <a class="is-active" href="#" aria-current="page">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <span>…</span>
+        <a href="#">20</a>
+        <a href="#" aria-label="다음 페이지">›</a>
+      </nav>
+    </section>
+
+    <section class="benefit-banner" aria-label="쇼핑 혜택">
+      <article><span aria-hidden="true">▣</span><div><h2>무료배송</h2><p>3만원 이상 구매 시</p></div></article>
+      <article><span aria-hidden="true">◷</span><div><h2>오늘출발</h2><p>오후 2시 이전 주문 시</p></div></article>
+      <article><span aria-hidden="true">▤</span><div><h2>첫구매혜택</h2><p>최대 10% 할인 쿠폰</p></div></article>
+      <article><span aria-hidden="true">♕</span><div><h2>멤버십 혜택</h2><p>등급별 추가 할인</p></div></article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <a class="site-footer__logo" href="index.html" aria-label="ABLY 홈">ABLY</a>
+        <nav class="site-footer__nav" aria-label="푸터 메뉴">
+          <a href="#">회사소개</a>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">위치기반서비스 이용약관</a>
+          <a href="#">제휴문의</a>
+          <a href="#">채용안내</a>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <address>
+          에이블리코퍼레이션(주) 대표 강석훈 | 사업자등록번호 220-88-01012 | 통신판매업신고 2020-서울강남-02369<br>
+          서울특별시 강남구 테헤란로 142, 9층 | 고객센터 1577-9383 (평일 09:00 - 18:00)
+        </address>
+        <small>© ABLY Corp. All rights reserved.</small>
+      </div>
+
+      <ul class="social-list" aria-label="소셜 채널">
+        <li><a href="#" aria-label="인스타그램">IG</a></li>
+        <li><a href="#" aria-label="유튜브">YT</a></li>
+        <li><a href="#" aria-label="페이스북">FB</a></li>
+        <li><a href="#" aria-label="카카오톡">KO</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
