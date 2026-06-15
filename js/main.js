@@ -786,7 +786,7 @@ function initGsapAnimations() {
     let cursorQuickY;
 
     gsap.set(downloadHeart, { scale: 0.35, autoAlpha: 0 });
-    gsap.set(downloadPhone, { y: 110, scale: 0.96, opacity: 0 });
+    gsap.set(downloadPhone, { y: 60, scale: 0.96, opacity: 0 });
     gsap.set(phoneScreenTrack, { yPercent: 0 });
 
     if (cursorLabel) {
@@ -892,8 +892,8 @@ function initGsapAnimations() {
       if (!cursorLabel || !cursorQuickX || !cursorQuickY) return;
 
       const rect = downloadVisual.getBoundingClientRect();
-      cursorQuickX(event.clientX - rect.left + 16);
-      cursorQuickY(event.clientY - rect.top + 18);
+      cursorQuickX(event.clientX - rect.left + 24);
+      cursorQuickY(event.clientY - rect.top + 28);
     };
 
     const spreadDownloadProducts = () => {
@@ -977,7 +977,7 @@ function initGsapAnimations() {
 
     downloadTimeline
       .to(downloadPhone, {
-        y: 0,
+        y: -56,
         scale: 1,
         opacity: 1,
         duration: 0.95,
@@ -985,7 +985,7 @@ function initGsapAnimations() {
       })
       .add(() => {
         gsap.to(downloadPhone, {
-          y: -8,
+          y: -64,
           duration: 2.6,
           repeat: -1,
           yoyo: true,
