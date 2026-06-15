@@ -20,6 +20,340 @@ const SELECTORS = {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const translations = {
+  ko: {
+    "nav.today": "오늘의 발견",
+    "nav.category": "카테고리",
+    "nav.brand": "브랜드",
+    "nav.event": "이벤트",
+    "search.form": "상품 검색",
+    "search.label": "검색어",
+    "search.placeholder": "취향 저격 드무드레스",
+    "search.button": "검색",
+    "header.mypage": "로그인 및 마이페이지",
+    "header.cart": "장바구니 및 구매 페이지",
+    "header.language": "언어 변경",
+    "header.menuOpen": "모바일 메뉴 열기",
+    "header.menuClose": "모바일 메뉴 닫기",
+    "hero1.eyebrow": "Daily Style, ABLY",
+    "hero1.titleLine1": "오늘의 취향,",
+    "hero1.titleStrong": "에이블리",
+    "hero1.titleSuffix": "에서",
+    "hero1.desc": "지금 가장 사랑받는 스타일을 만나보세요. 에이블리로 떠나는 취향 탐험",
+    "hero1.cta": "지금 쇼핑하기",
+    "hero2.eyebrow": "FREE SHIPPING",
+    "hero2.titleLine1": "배송비 걱정",
+    "hero2.titleLine2": "없이,",
+    "hero2.titleStrong": "더 가볍게",
+    "hero2.desc": "무료배송 혜택으로 오늘의 스타일을 부담 없이 만나보세요.",
+    "hero2.cta": "혜택 보러가기",
+    "category.eyebrow": "01. Category",
+    "category.titleLine1": "인기 카테고리",
+    "category.titleLine2": "지금 많이 찾는 아이템",
+    "category.desc": "에이블리에서 가장 인기있는 카테고리로 스타일링하세요.",
+    "category.cta": "전체 카테고리 보기",
+    "trend.eyebrow": "02. Trend Category",
+    "trend.titleLine1": "지금, 에이블리에서",
+    "trend.titleStrong": "사랑받는 스타일",
+    "trend.desc": "에디터가 추천하는 트렌드 룩을 확인해보세요.",
+    "event.eyebrow": "03. Shopping Benefits",
+    "event.titleLine1": "오늘의 혜택을",
+    "event.titleStrong": "가장 먼저 만나보세요",
+    "event.desc": "놓치기 아쉬운 에이블리 인기 상품을 한눈에 확인하세요.",
+    "download.eyebrow": "04. Shopping Benefits",
+    "download.titleLine1": "앱에서 더 빠르게",
+    "download.titleStrong": "나만의 쇼핑을 시작하세요",
+    "download.desc": "관심 상품 알림부터 무료배송 혜택까지, 에이블리 앱에서 더 편리하게 확인해보세요.",
+    "download.appStore": "App Store 다운로드",
+    "download.googlePlay": "Google Play 다운로드",
+    "common.viewMore": "자세히 보기"
+  },
+  en: {
+    "nav.today": "Today's Picks",
+    "nav.category": "Category",
+    "nav.brand": "Brand",
+    "nav.event": "Event",
+    "search.form": "Product Search",
+    "search.label": "Search",
+    "search.placeholder": "Find your favorite dress",
+    "search.button": "Search",
+    "header.mypage": "Login and My Page",
+    "header.cart": "Cart and Orders",
+    "header.language": "Change Language",
+    "header.menuOpen": "Open mobile menu",
+    "header.menuClose": "Close mobile menu",
+    "hero1.eyebrow": "Daily Style, ABLY",
+    "hero1.titleLine1": "Your taste today,",
+    "hero1.titleStrong": "ABLY",
+    "hero1.titleSuffix": " awaits",
+    "hero1.desc": "Explore the most-loved styles now and discover your taste with ABLY.",
+    "hero1.cta": "Shop Now",
+    "hero2.eyebrow": "FREE SHIPPING",
+    "hero2.titleLine1": "No shipping",
+    "hero2.titleLine2": "worries,",
+    "hero2.titleStrong": "shop lighter",
+    "hero2.desc": "Enjoy today's styles more freely with free shipping benefits.",
+    "hero2.cta": "View Benefits",
+    "category.eyebrow": "01. Category",
+    "category.titleLine1": "Popular Categories",
+    "category.titleLine2": "Items everyone wants now",
+    "category.desc": "Style your day with ABLY's most popular categories.",
+    "category.cta": "View All Categories",
+    "trend.eyebrow": "02. Trend Category",
+    "trend.titleLine1": "Loved now",
+    "trend.titleStrong": "on ABLY",
+    "trend.desc": "Explore trend looks recommended by our editors.",
+    "event.eyebrow": "03. Shopping Benefits",
+    "event.titleLine1": "Today's benefits",
+    "event.titleStrong": "before anyone else",
+    "event.desc": "See ABLY's popular offers at a glance.",
+    "download.eyebrow": "04. Shopping Benefits",
+    "download.titleLine1": "Start faster",
+    "download.titleStrong": "in the ABLY app",
+    "download.desc": "Check wish alerts, free shipping benefits, and more in the ABLY app.",
+    "download.appStore": "Download on App Store",
+    "download.googlePlay": "Download on Google Play",
+    "common.viewMore": "View More"
+  },
+  ja: {
+    "nav.today": "今日のおすすめ",
+    "nav.category": "カテゴリー",
+    "nav.brand": "ブランド",
+    "nav.event": "イベント",
+    "search.form": "商品検索",
+    "search.label": "検索語",
+    "search.placeholder": "お気に入りのワンピースを探す",
+    "search.button": "検索",
+    "header.mypage": "ログイン・マイページ",
+    "header.cart": "カート・購入ページ",
+    "header.language": "言語変更",
+    "header.menuOpen": "モバイルメニューを開く",
+    "header.menuClose": "モバイルメニューを閉じる",
+    "hero1.eyebrow": "Daily Style, ABLY",
+    "hero1.titleLine1": "今日の好みを、",
+    "hero1.titleStrong": "ABLY",
+    "hero1.titleSuffix": "で",
+    "hero1.desc": "今いちばん愛されているスタイルを、ABLYで見つけてください。",
+    "hero1.cta": "今すぐショッピング",
+    "hero2.eyebrow": "FREE SHIPPING",
+    "hero2.titleLine1": "送料を",
+    "hero2.titleLine2": "気にせず、",
+    "hero2.titleStrong": "もっと気軽に",
+    "hero2.desc": "送料無料の特典で、今日のスタイルをもっと気軽に楽しめます。",
+    "hero2.cta": "特典を見る",
+    "category.eyebrow": "01. Category",
+    "category.titleLine1": "人気カテゴリー",
+    "category.titleLine2": "今よく探されているアイテム",
+    "category.desc": "ABLYで人気のカテゴリーからスタイリングしてみてください。",
+    "category.cta": "すべてのカテゴリーを見る",
+    "trend.eyebrow": "02. Trend Category",
+    "trend.titleLine1": "今、ABLYで",
+    "trend.titleStrong": "愛されるスタイル",
+    "trend.desc": "エディターおすすめのトレンドルックをチェックしてください。",
+    "event.eyebrow": "03. Shopping Benefits",
+    "event.titleLine1": "今日の特典を",
+    "event.titleStrong": "いち早くチェック",
+    "event.desc": "見逃せないABLYの人気特典を一目で確認できます。",
+    "download.eyebrow": "04. Shopping Benefits",
+    "download.titleLine1": "アプリでもっと早く",
+    "download.titleStrong": "自分だけのショッピングを",
+    "download.desc": "お気に入り通知から送料無料特典まで、ABLYアプリで便利に確認できます。",
+    "download.appStore": "App Storeでダウンロード",
+    "download.googlePlay": "Google Playでダウンロード",
+    "common.viewMore": "詳しく見る"
+  },
+  zh: {
+    "nav.today": "今日推荐",
+    "nav.category": "分类",
+    "nav.brand": "品牌",
+    "nav.event": "活动",
+    "search.form": "商品搜索",
+    "search.label": "搜索词",
+    "search.placeholder": "寻找心动连衣裙",
+    "search.button": "搜索",
+    "header.mypage": "登录与我的页面",
+    "header.cart": "购物车与订单",
+    "header.language": "切换语言",
+    "header.menuOpen": "打开移动菜单",
+    "header.menuClose": "关闭移动菜单",
+    "hero1.eyebrow": "Daily Style, ABLY",
+    "hero1.titleLine1": "今天的喜好，",
+    "hero1.titleStrong": "ABLY",
+    "hero1.titleSuffix": "为你准备",
+    "hero1.desc": "现在就遇见最受喜爱的风格，在 ABLY 开始你的喜好探索。",
+    "hero1.cta": "立即选购",
+    "hero2.eyebrow": "FREE SHIPPING",
+    "hero2.titleLine1": "无需担心",
+    "hero2.titleLine2": "运费，",
+    "hero2.titleStrong": "轻松选购",
+    "hero2.desc": "通过免运费优惠，更轻松地享受今日风格。",
+    "hero2.cta": "查看优惠",
+    "category.eyebrow": "01. Category",
+    "category.titleLine1": "热门分类",
+    "category.titleLine2": "现在大家都在找的单品",
+    "category.desc": "从 ABLY 人气分类中完成你的今日穿搭。",
+    "category.cta": "查看全部分类",
+    "trend.eyebrow": "02. Trend Category",
+    "trend.titleLine1": "现在，ABLY 上",
+    "trend.titleStrong": "备受喜爱的风格",
+    "trend.desc": "查看编辑推荐的流行穿搭。",
+    "event.eyebrow": "03. Shopping Benefits",
+    "event.titleLine1": "今日优惠",
+    "event.titleStrong": "抢先查看",
+    "event.desc": "一眼查看不容错过的 ABLY 人气优惠。",
+    "download.eyebrow": "04. Shopping Benefits",
+    "download.titleLine1": "在应用中更快",
+    "download.titleStrong": "开始专属购物",
+    "download.desc": "从关注商品提醒到免运费优惠，都可在 ABLY 应用中便捷查看。",
+    "download.appStore": "在 App Store 下载",
+    "download.googlePlay": "在 Google Play 下载",
+    "common.viewMore": "查看更多"
+  }
+};
+
+function getStoredLanguage() {
+  return localStorage.getItem("ably-language") || "ko";
+}
+
+function getTranslation(key) {
+  const selectedTranslations = translations[getStoredLanguage()] || translations.ko;
+  return selectedTranslations[key] || translations.ko[key] || "";
+}
+
+function applyLanguage(lang) {
+  const selectedTranslations = translations[lang];
+
+  if (!selectedTranslations) return;
+
+  document.documentElement.lang = lang;
+  localStorage.setItem("ably-language", lang);
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+
+    if (selectedTranslations[key]) {
+      element.textContent = selectedTranslations[key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+
+    if (selectedTranslations[key]) {
+      element.setAttribute("placeholder", selectedTranslations[key]);
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+    const key = element.dataset.i18nAria;
+
+    if (selectedTranslations[key]) {
+      element.setAttribute("aria-label", selectedTranslations[key]);
+    }
+  });
+}
+
+function initLanguageSwitcher() {
+  const languageButton = document.querySelector("[data-language-button]");
+  const languageMenu = document.querySelector("[data-language-menu]");
+  const languageOptions = document.querySelectorAll("[data-lang]");
+
+  applyLanguage(getStoredLanguage());
+
+  if (!languageButton || !languageMenu || !languageOptions.length) return;
+
+  languageButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const isOpen = languageMenu.classList.toggle("is-open");
+    languageButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const selectedLang = option.dataset.lang;
+
+      applyLanguage(selectedLang);
+
+      languageMenu.classList.remove("is-open");
+      languageButton.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!languageMenu.contains(event.target) && !languageButton.contains(event.target)) {
+      languageMenu.classList.remove("is-open");
+      languageButton.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      languageMenu.classList.remove("is-open");
+      languageButton.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+function initHeaderSearch() {
+  const searchForm = document.querySelector("[data-search-form]");
+  const searchInput = document.querySelector("[data-search-input]");
+  const searchClear = document.querySelector("[data-search-clear]");
+  const searchPanel = document.querySelector("[data-search-panel]");
+
+  if (!searchForm || !searchInput || !searchClear || !searchPanel) return;
+
+  const openSearch = () => {
+    searchForm.classList.add("is-open");
+  };
+
+  const closeSearch = () => {
+    searchForm.classList.remove("is-open");
+  };
+
+  const updateValueState = () => {
+    searchForm.classList.toggle("has-value", searchInput.value.trim().length > 0);
+  };
+
+  searchInput.addEventListener("focus", openSearch);
+  searchInput.addEventListener("input", updateValueState);
+
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    openSearch();
+    searchInput.focus();
+  });
+
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    updateValueState();
+    searchInput.focus();
+  });
+
+  searchPanel.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      searchInput.value = button.textContent.trim();
+      updateValueState();
+      searchInput.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!searchForm.contains(event.target)) {
+      closeSearch();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSearch();
+      searchInput.blur();
+    }
+  });
+
+  updateValueState();
+}
+
 function initMobileMenu() {
   const button = document.querySelector(SELECTORS.menuButton);
   const menu = document.querySelector(SELECTORS.mobileMenu);
@@ -28,7 +362,7 @@ function initMobileMenu() {
 
   const closeMenu = () => {
     button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-label", "모바일 메뉴 열기");
+    button.setAttribute("aria-label", getTranslation("header.menuOpen"));
     menu.classList.remove("is-open");
     document.body.classList.remove("is-menu-open");
   };
@@ -36,7 +370,7 @@ function initMobileMenu() {
   button.addEventListener("click", () => {
     const isOpen = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!isOpen));
-    button.setAttribute("aria-label", isOpen ? "모바일 메뉴 열기" : "모바일 메뉴 닫기");
+    button.setAttribute("aria-label", isOpen ? getTranslation("header.menuOpen") : getTranslation("header.menuClose"));
     menu.classList.toggle("is-open", !isOpen);
     document.body.classList.toggle("is-menu-open", !isOpen);
   });
@@ -423,6 +757,8 @@ function initImageFallbacks() {
 }
 
 function initApp() {
+  initLanguageSwitcher();
+  initHeaderSearch();
   initMobileMenu();
   initHeroSwiper();
   initTrendSwiper();
