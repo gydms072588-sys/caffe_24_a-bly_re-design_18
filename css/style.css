@@ -825,7 +825,7 @@ body.is-menu-open {
 .category-card:not(.category-card--featured) .category-card__media img {
   object-position: var(--image-position, center center);
   transform: scale(var(--image-scale, 1));
-  transform-origin: var(--image-origin, center center);
+  transform-origin: center center;
 }
 
 .category-card:not(.category-card--featured):hover .category-card__media img {
@@ -846,6 +846,7 @@ body.is-menu-open {
   height: 320px;
   aspect-ratio: auto;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .category-card:not(.category-card--featured) .category-card__body {
@@ -856,27 +857,27 @@ body.is-menu-open {
 }
 
 .category-card--shoes {
-  --image-scale: 0.96;
-  --image-hover-scale: 1.02;
-  --image-position: center center;
+  --image-scale: 1;
+  --image-hover-scale: 1;
+  --image-position: center 48%;
 }
 
 .category-card--bag {
-  --image-scale: 0.96;
+  --image-scale: 1;
   --image-hover-scale: 1.02;
-  --image-position: center top;
+  --image-position: center 45%;
 }
 
 .category-card--beauty {
-  --image-scale: 0.95;
+  --image-scale: 1;
   --image-hover-scale: 1.01;
   --image-position: center center;
 }
 
 .category-card--life {
-  --image-scale: 0.96;
+  --image-scale: 1;
   --image-hover-scale: 1.02;
-  --image-position: center center;
+  --image-position: center 52%;
 }
 
 .category-card__title {
@@ -932,9 +933,17 @@ body.is-menu-open {
 }
 
 .category-card--featured .category-card__media img {
-  object-position: center bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  transform: translate(10%, 0%) scale(0.9);
+  transform-origin: right bottom;
 }
 
+.category-card--featured:hover .category-card__media img {
+  transform: translate(10%, 0%) scale(0.94);
+}
 .category-card--featured .category-card__body {
   position: relative;
   z-index: 1;
