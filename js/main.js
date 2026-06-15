@@ -768,38 +768,259 @@ function initGsapAnimations() {
     }
   });
 
-  gsap.from(".download__mockup", {
-    y: 72,
-    opacity: 0,
-    duration: 0.95,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".download__visual",
-      start: "top 75%"
-    }
-  });
+  const downloadVisual = document.querySelector(".download__visual");
 
-  gsap.utils.toArray(".download__object").forEach((object, index) => {
-    gsap.from(object, {
-      y: 36,
-      opacity: 0,
-      duration: 0.8,
-      delay: index * 0.08,
-      ease: "power3.out",
+  if (downloadVisual) {
+    const downloadHeart = downloadVisual.querySelector(".download__heart-main");
+    const downloadPhone = downloadVisual.querySelector(".download__mockup");
+    const downloadProducts = gsap.utils.toArray(".download__object");
+    const phoneScreenTrack = downloadVisual.querySelector(".phone-screen-track");
+    const cursorLabel = downloadVisual.querySelector(".download__cursor-label");
+    const canHoverDownloadVisual = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const benefitLabels = ["무료배송", "오늘만 특가", "찜하면 알림", "앱 전용 혜택", "빠른 쇼핑"];
+    let isDownloadVisualReady = false;
+    let isDownloadProductsOpen = false;
+    let downloadFloatingTweens = [];
+    let downloadProductTargets = new Map();
+    let cursorQuickX;
+    let cursorQuickY;
+
+    gsap.set(downloadHeart, { scale: 0.35, autoAlpha: 0 });
+    gsap.set(downloadPhone, { y: 110, scale: 0.96, opacity: 0 });
+    gsap.set(phoneScreenTrack, { yPercent: 0 });
+
+    if (cursorLabel) {
+      gsap.set(cursorLabel, { xPercent: 0, yPercent: 0, scale: 0.96, opacity: 0 });
+      cursorQuickX = gsap.quickTo(cursorLabel, "x", { duration: 0.24, ease: "power3.out" });
+      cursorQuickY = gsap.quickTo(cursorLabel, "y", { duration: 0.24, ease: "power3.out" });
+    }
+
+    const phoneScreenTween = gsap.to(phoneScreenTrack, {
+      yPercent: -50,
+      duration: 28,
+      repeat: -1,
+      ease: "none",
+      paused: true
+    });
+
+    const getVisibleDownloadProducts = () => downloadProducts.filter((object) => object.offsetParent !== null);
+
+    const getCollapsedProductOffset = (object) => {
+      const phoneRect = downloadPhone.getBoundingClientRect();
+      const objectRect = object.getBoundingClientRect();
+
+      return {
+        x: phoneRect.left + phoneRect.width * 0.5 - (objectRect.left + objectRect.width * 0.5),
+        y: phoneRect.top + phoneRect.height * 0.5 - (objectRect.top + objectRect.height * 0.5)
+      };
+    };
+
+    const getRandomInRange = (min, max) => gsap.utils.random(min, max, 1);
+
+    const getProductSpreadTarget = () => ({
+      x: getRandomInRange(-12, 12),
+      y: getRandomInRange(-10, 10),
+      rotation: getRandomInRange(-3, 3)
+    });
+
+    const clusterDownloadProducts = (duration = 0, opacity = 0) => {
+      getVisibleDownloadProducts().forEach((object) => {
+        const offset = getCollapsedProductOffset(object);
+
+        gsap.to(object, {
+          x: offset.x,
+          y: offset.y,
+          scale: 0.45,
+          opacity,
+          rotation: 0,
+          duration,
+          ease: duration ? "power3.inOut" : "power3.out",
+          overwrite: true
+        });
+      });
+    };
+
+    const stopDownloadProductFloating = () => {
+      downloadFloatingTweens.forEach((tween) => tween.kill());
+      downloadFloatingTweens = [];
+    };
+
+    const startDownloadProductFloating = () => {
+      stopDownloadProductFloating();
+
+      downloadFloatingTweens = getVisibleDownloadProducts().map((object, index) => {
+        const target = downloadProductTargets.get(object);
+        if (!target) return null;
+
+        return gsap.to(object, {
+          y: target.y + (index % 2 === 0 ? -4 : 4),
+          rotation: target.rotation + (index % 2 === 0 ? 0.5 : -0.5),
+          duration: 2.6 + index * 0.12,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }).filter(Boolean);
+    };
+
+    const showDownloadCursorLabel = () => {
+      if (!cursorLabel) return;
+
+      cursorLabel.textContent = benefitLabels[Math.floor(Math.random() * benefitLabels.length)];
+      gsap.to(cursorLabel, {
+        scale: 1,
+        opacity: 0.9,
+        duration: 0.2,
+        ease: "power3.out",
+        overwrite: true
+      });
+    };
+
+    const hideDownloadCursorLabel = () => {
+      if (!cursorLabel) return;
+
+      gsap.to(cursorLabel, {
+        scale: 0.96,
+        opacity: 0,
+        duration: 0.22,
+        ease: "power3.out",
+        overwrite: true
+      });
+    };
+
+    const moveDownloadCursorLabel = (event) => {
+      if (!cursorLabel || !cursorQuickX || !cursorQuickY) return;
+
+      const rect = downloadVisual.getBoundingClientRect();
+      cursorQuickX(event.clientX - rect.left + 16);
+      cursorQuickY(event.clientY - rect.top + 18);
+    };
+
+    const spreadDownloadProducts = () => {
+      if (!isDownloadVisualReady) return;
+
+      isDownloadProductsOpen = true;
+      downloadVisual.classList.add("is-expanded");
+      stopDownloadProductFloating();
+      phoneScreenTween.play();
+
+      gsap.timeline({ defaults: { overwrite: true } })
+        .to(downloadHeart, {
+          scale: 1.05,
+          autoAlpha: 0.75,
+          duration: 0.58,
+          ease: "back.out(1.4)"
+        })
+        .to(downloadHeart, {
+          scale: 1,
+          duration: 0.22,
+          ease: "power3.out"
+        }, "-=0.08");
+
+      const visibleProducts = getVisibleDownloadProducts();
+      downloadProductTargets = new Map(visibleProducts.map((object) => [object, getProductSpreadTarget(object)]));
+
+      gsap.to(visibleProducts, {
+        x: (index, object) => downloadProductTargets.get(object).x,
+        y: (index, object) => downloadProductTargets.get(object).y,
+        scale: 1,
+        opacity: 1,
+        rotation: (index, object) => downloadProductTargets.get(object).rotation,
+        duration: 0.7,
+        ease: "back.out(1.4)",
+        stagger: 0.06,
+        overwrite: true,
+        onComplete: startDownloadProductFloating
+      });
+    };
+
+    const gatherDownloadProducts = () => {
+      if (!isDownloadVisualReady) return;
+
+      isDownloadProductsOpen = false;
+      downloadVisual.classList.remove("is-expanded");
+      stopDownloadProductFloating();
+      phoneScreenTween.pause();
+      hideDownloadCursorLabel();
+
+      gsap.to(downloadHeart, {
+        scale: 0.35,
+        autoAlpha: 0,
+        duration: 0.52,
+        ease: "power3.inOut",
+        overwrite: true
+      });
+
+      clusterDownloadProducts(0.68, 0);
+    };
+
+    const activateDownloadVisual = (event) => {
+      if (!isDownloadVisualReady) return;
+
+      if (event) {
+        moveDownloadCursorLabel(event);
+      }
+
+      showDownloadCursorLabel();
+      spreadDownloadProducts();
+    };
+
+    requestAnimationFrame(() => clusterDownloadProducts(0, 0));
+
+    const downloadTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: ".download__visual",
-        start: "top 75%"
+        trigger: downloadVisual,
+        start: "top 74%",
+        once: true
       }
     });
 
-    gsap.to(object, {
-      y: index % 2 === 0 ? -14 : 14,
-      duration: 2.8 + index * 0.25,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
+    downloadTimeline
+      .to(downloadPhone, {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.95,
+        ease: "power3.out"
+      })
+      .add(() => {
+        gsap.to(downloadPhone, {
+          y: -8,
+          duration: 2.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      })
+      .add(() => clusterDownloadProducts(0.25, 0))
+      .add(() => {
+        isDownloadVisualReady = true;
+
+        if (canHoverDownloadVisual && downloadVisual.matches(":hover")) {
+          activateDownloadVisual();
+        }
+      });
+
+    if (canHoverDownloadVisual) {
+      downloadVisual.addEventListener("pointermove", moveDownloadCursorLabel);
+      downloadVisual.addEventListener("mouseenter", activateDownloadVisual);
+      downloadVisual.addEventListener("mouseleave", gatherDownloadProducts);
+    } else {
+      downloadVisual.addEventListener("click", () => {
+        if (isDownloadProductsOpen) {
+          gatherDownloadProducts();
+        } else {
+          spreadDownloadProducts();
+        }
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      if (!isDownloadProductsOpen) {
+        clusterDownloadProducts();
+      }
     });
-  });
+  }
 }
 
 function initImageFallbacks() {
