@@ -359,6 +359,17 @@ body.is-menu-open {
   color: #a49591;
 }
 
+.search-form input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.search-form input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .search-clear-button {
   display: none;
   place-items: center;

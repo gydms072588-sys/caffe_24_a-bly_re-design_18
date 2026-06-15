@@ -20,6 +20,22 @@ const SELECTORS = {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const defaultSearchSuggestions = [
+  "러블리 원피스",
+  "여름 데일리룩",
+  "무료배송 가디건",
+  "출근룩 블라우스",
+  "데이트룩 스커트"
+];
+
+const searchSuggestionTemplates = [
+  "{query} 코디",
+  "{query} 추천",
+  "{query} 무료배송",
+  "{query} 인기상품",
+  "{query} 스타일링"
+];
+
 const translations = {
   ko: {
     "nav.today": "오늘의 발견",
@@ -42,7 +58,7 @@ const translations = {
     "hero1.desc": "지금 가장 사랑받는 스타일을 만나보세요. 에이블리로 떠나는 취향 탐험",
     "hero1.cta": "지금 쇼핑하기",
     "hero2.eyebrow": "FREE SHIPPING",
-    "hero2.titleLine1": "배송비 걱정",
+    "hero2.titleLine1": "배송비 걱정 없이,",
     "hero2.titleLine2": "없이,",
     "hero2.titleStrong": "더 가볍게",
     "hero2.desc": "무료배송 혜택으로 오늘의 스타일을 부담 없이 만나보세요.",
@@ -89,7 +105,7 @@ const translations = {
     "hero1.desc": "Explore the most-loved styles now and discover your taste with ABLY.",
     "hero1.cta": "Shop Now",
     "hero2.eyebrow": "FREE SHIPPING",
-    "hero2.titleLine1": "No shipping",
+    "hero2.titleLine1": "No shipping worries,",
     "hero2.titleLine2": "worries,",
     "hero2.titleStrong": "shop lighter",
     "hero2.desc": "Enjoy today's styles more freely with free shipping benefits.",
@@ -136,7 +152,7 @@ const translations = {
     "hero1.desc": "今いちばん愛されているスタイルを、ABLYで見つけてください。",
     "hero1.cta": "今すぐショッピング",
     "hero2.eyebrow": "FREE SHIPPING",
-    "hero2.titleLine1": "送料を",
+    "hero2.titleLine1": "送料を気にせず、",
     "hero2.titleLine2": "気にせず、",
     "hero2.titleStrong": "もっと気軽に",
     "hero2.desc": "送料無料の特典で、今日のスタイルをもっと気軽に楽しめます。",
@@ -183,7 +199,7 @@ const translations = {
     "hero1.desc": "现在就遇见最受喜爱的风格，在 ABLY 开始你的喜好探索。",
     "hero1.cta": "立即选购",
     "hero2.eyebrow": "FREE SHIPPING",
-    "hero2.titleLine1": "无需担心",
+    "hero2.titleLine1": "无需担心运费，",
     "hero2.titleLine2": "运费，",
     "hero2.titleStrong": "轻松选购",
     "hero2.desc": "通过免运费优惠，更轻松地享受今日风格。",
@@ -300,11 +316,34 @@ function initHeaderSearch() {
   const searchInput = document.querySelector("[data-search-input]");
   const searchClear = document.querySelector("[data-search-clear]");
   const searchPanel = document.querySelector("[data-search-panel]");
+  const suggestionList = document.querySelector("[data-search-suggestion-list]");
 
-  if (!searchForm || !searchInput || !searchClear || !searchPanel) return;
+  if (!searchForm || !searchInput || !searchClear || !searchPanel || !suggestionList) return;
+
+  const renderSuggestions = (query = "") => {
+    const trimmedQuery = query.trim();
+    const suggestions = trimmedQuery
+      ? searchSuggestionTemplates.map((template) => template.replace("{query}", trimmedQuery))
+      : defaultSearchSuggestions;
+
+    suggestionList.replaceChildren();
+
+    suggestions.forEach((text) => {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.dataset.suggestion = text;
+      button.textContent = text;
+
+      item.append(button);
+      suggestionList.append(item);
+    });
+  };
 
   const openSearch = () => {
     searchForm.classList.add("is-open");
+    renderSuggestions(searchInput.value);
   };
 
   const closeSearch = () => {
@@ -312,7 +351,10 @@ function initHeaderSearch() {
   };
 
   const updateValueState = () => {
-    searchForm.classList.toggle("has-value", searchInput.value.trim().length > 0);
+    const value = searchInput.value.trim();
+
+    searchForm.classList.toggle("has-value", value.length > 0);
+    renderSuggestions(value);
   };
 
   searchInput.addEventListener("focus", openSearch);
@@ -330,12 +372,14 @@ function initHeaderSearch() {
     searchInput.focus();
   });
 
-  searchPanel.querySelectorAll("button").forEach((button) => {
-    button.addEventListener("click", () => {
-      searchInput.value = button.textContent.trim();
-      updateValueState();
-      searchInput.focus();
-    });
+  suggestionList.addEventListener("click", (event) => {
+    const suggestionButton = event.target.closest("[data-suggestion]");
+
+    if (!suggestionButton) return;
+
+    searchInput.value = suggestionButton.dataset.suggestion;
+    updateValueState();
+    searchInput.focus();
   });
 
   document.addEventListener("click", (event) => {
@@ -351,6 +395,7 @@ function initHeaderSearch() {
     }
   });
 
+  renderSuggestions();
   updateValueState();
 }
 

@@ -6,6 +6,7 @@
   <meta name="description" content="ABLY 여성의류 상의 카테고리 상품 목록">
   <title>ABLY | 여성의류 상의</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
@@ -33,15 +34,26 @@
           <label class="sr-only" for="site-search">검색어</label>
           <input id="site-search" name="search" type="search" placeholder="하나만 사도 무료배송" autocomplete="off">
           <button class="icon-button" type="submit" aria-label="검색">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+            <span class="material-symbols-outlined" aria-hidden="true">search</span>
           </button>
         </form>
-        <button class="icon-button site-header__icon" type="button" aria-label="마이페이지">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0m12-13a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
-        </button>
-        <button class="icon-button site-header__icon" type="button" aria-label="장바구니">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 13H7L6 8Zm3 0a3 3 0 1 1 6 0"/></svg>
-        </button>
+        <a class="header-icon-button site-header__icon" href="#" aria-label="로그인 및 마이페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+        </a>
+        <a class="header-icon-button site-header__icon" href="#" aria-label="장바구니 및 구매 페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+        </a>
+        <div class="language-switcher site-header__icon">
+          <button class="header-icon-button" type="button" aria-label="언어 변경" aria-expanded="false" data-language-button>
+            <span class="material-symbols-outlined" aria-hidden="true">globe</span>
+          </button>
+          <div class="language-menu" data-language-menu>
+            <button type="button" data-lang="ko">한국어</button>
+            <button type="button" data-lang="en">English</button>
+            <button type="button" data-lang="ja">日本語</button>
+            <button type="button" data-lang="zh">中文</button>
+          </div>
+        </div>
         <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
           <span></span>
           <span></span>
