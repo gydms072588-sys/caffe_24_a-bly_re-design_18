@@ -1458,16 +1458,24 @@ body.is-menu-open {
   z-index: 11;
   overflow: hidden;
   background: transparent;
-  clip-path: polygon(46% 4%, 90% 10%, 56% 91%, 7% 84%);
+  clip-path: polygon(
+    47% 7%,
+    92% 11%,
+    50% 91%,
+    4% 84%
+  );
+   background: #ffffff
 }
 .phone-screen-track {
   position: absolute;
   top: 0;
   left: -2%;
   display: flex;
-  width: 104%;
+  width: 90%;
   flex-direction: column;
   will-change: transform;
+  outline: 2px solid rgba(0, 200, 255, 0.7)
+ 
 }
 
 .phone-screen-track img {
@@ -2292,12 +2300,12 @@ body.is-menu-open {
     min-height: 560px;
   }
 
-  .download__mockup {
-    width: min(62vw, 380px);
-    margin-top: 0;
-    rotate: 0deg;
-  }
-
+.download__mockup {
+  width: clamp(360px, 29vw, 460px);
+  margin-top: -64px;
+  rotate: 8deg;
+  translate: 2% 0;
+}
   .download__heart-main {
     width: min(82vw, 520px);
   }
