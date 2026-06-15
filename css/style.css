@@ -601,19 +601,9 @@ body.is-menu-open {
   font-weight: 400;
 }
 
-.hero__slide--benefit .hero__title {
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 1.12;
-  letter-spacing: -0.035em;
-}
-
-.hero__slide--benefit .hero__desc {
-  max-width: 420px;
-  margin-top: 24px;
-}
-
-.hero__slide--benefit .button--primary {
-  margin-top: 36px;
+.hero__content .button--primary {
+  width: 100%;
+  max-width: 440px;
 }
 
 .hero__visual {
@@ -1928,10 +1918,6 @@ body.is-menu-open {
     font-size: 42px;
   }
 
-  .hero__slide--benefit .hero__title {
-    font-size: 38px;
-  }
-
   .hero__desc,
   .section-desc {
     font-size: 15px;
@@ -2079,5 +2065,28 @@ body.is-menu-open {
 @media (prefers-reduced-motion: reduce) {
   .hero__visual video {
     opacity: 0.96;
+  }
+}
+
+/* 2번째 히어로를 1번째 히어로와 비슷한 균형으로 정리 */
+.hero .hero__slide--benefit .hero__title {
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.hero .hero__slide--benefit .hero__desc {
+  max-width: 380px;
+  margin: 28px 0 26px;
+}
+
+.hero .hero__slide--benefit .button--primary {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .hero .hero__slide--benefit .hero__title {
+    font-size: 32px;
+    line-height: 1.12;
   }
 }
