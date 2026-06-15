@@ -1474,13 +1474,11 @@ body.is-menu-open {
   width: 90%;
   flex-direction: column;
   will-change: transform;
-  outline: 2px solid rgba(0, 200, 255, 0.7)
- 
 }
 
 .phone-screen-track img {
   display: block;
-  width: 100%;
+  width: 200%;
   height: auto;
   flex: 0 0 auto;
 }
