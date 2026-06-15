@@ -153,7 +153,7 @@ body.is-menu-open {
 .section-title strong,
 .hero__title strong {
   color: var(--color-pink);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .section-desc {
@@ -560,6 +560,77 @@ body.is-menu-open {
 
 .mobile-nav {
   display: none;
+}
+
+.mobile-nav__actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 18px;
+}
+
+.mobile-nav__action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  border-radius: 12px;
+  background: var(--color-pink-soft);
+  padding: 0 14px;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mobile-nav__action .material-symbols-outlined {
+  font-size: 22px;
+  color: var(--color-pink);
+}
+
+.mobile-nav__action:hover,
+.mobile-nav__action:focus-visible {
+  background: var(--color-pink);
+  color: var(--color-white);
+}
+
+.mobile-nav__action:hover .material-symbols-outlined,
+.mobile-nav__action:focus-visible .material-symbols-outlined {
+  color: var(--color-white);
+}
+
+.mobile-language {
+  border-radius: 12px;
+  background: #fff7fa;
+  padding: 14px;
+}
+
+.mobile-language__title {
+  margin-bottom: 10px;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mobile-language__buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.mobile-language__buttons button {
+  min-height: 36px;
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mobile-language__buttons button:hover,
+.mobile-language__buttons button:focus-visible {
+  background: var(--color-pink);
+  color: var(--color-white);
 }
 
 /* Hero */
@@ -1774,6 +1845,27 @@ body.is-menu-open {
     color: var(--color-pink);
   }
 
+  .mobile-nav .mobile-nav__action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: var(--color-pink-soft);
+    padding: 0 14px;
+    color: var(--color-ink);
+  }
+
+  .mobile-nav .mobile-nav__action:hover,
+  .mobile-nav .mobile-nav__action:focus-visible {
+    background: var(--color-pink);
+    color: var(--color-white);
+  }
+
+  .mobile-nav .mobile-nav__action:hover .material-symbols-outlined,
+  .mobile-nav .mobile-nav__action:focus-visible .material-symbols-outlined {
+    color: var(--color-white);
+  }
+
   .hero {
     background: #faf5f2;
   }
@@ -1928,7 +2020,9 @@ body.is-menu-open {
   }
 
   .hero__pagination {
-    bottom: 374px !important;
+    bottom: 420px !important;
+    left: 29px !important;
+    z-index: 5;
   }
 
   .section-title {

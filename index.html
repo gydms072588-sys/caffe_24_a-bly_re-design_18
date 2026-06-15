@@ -23,7 +23,7 @@
       <nav class="site-header__nav" aria-label="주요 메뉴">
         <ul class="gnb">
           <li class="gnb__item"><a class="gnb__link" href="#hero">오늘의 발견</a></li>
-          <li class="gnb__item"><a class="gnb__link is-active" href="category.html">카테고리</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li>
           <li class="gnb__item"><a class="gnb__link" href="#style">브랜드</a></li>
           <li class="gnb__item"><a class="gnb__link" href="#event">이벤트</a></li>
         </ul>
@@ -71,9 +71,31 @@
 
     <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
       <a href="#hero">오늘의 발견</a>
-      <a class="is-active" href="category.html">카테고리</a>
+      <a href="category.html">카테고리</a>
       <a href="#style">브랜드</a>
       <a href="#event">이벤트</a>
+
+      <div class="mobile-nav__actions" aria-label="모바일 사용자 메뉴">
+        <a class="mobile-nav__action" href="#" aria-label="로그인 및 마이페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <span>마이페이지</span>
+        </a>
+
+        <a class="mobile-nav__action" href="#" aria-label="장바구니 및 구매 페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+          <span>장바구니</span>
+        </a>
+
+        <div class="mobile-language">
+          <p class="mobile-language__title">Language</p>
+          <div class="mobile-language__buttons">
+            <button type="button" data-lang="ko">KR</button>
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="ja">JP</button>
+            <button type="button" data-lang="zh">CN</button>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -85,7 +107,7 @@
             <div class="hero__content">
               <p class="section-eyebrow">Daily Style, ABLY</p>
               <h1 class="hero__title">오늘의 취향,<br><strong>에이블리</strong>에서</h1>
-              <p class="hero__desc">지금 가장 사랑받는 스타일을 만나보세요. 에이블리로 떠나는 취향 탐험</p>
+              <p class="hero__desc">지금 가장 사랑받는 스타일을 만나보세요. <br> 에이블리로 떠나는 취향 탐험</p>
               <a class="button button--primary" href="category.html">
                 <span>지금 쇼핑하기</span>
                 <span class="button__arrow" aria-hidden="true">→</span>
@@ -104,7 +126,7 @@
                 배송비 걱정 없이,<br>
                 <strong>더 가볍게</strong>
               </h2>
-              <p class="hero__desc">무료배송 혜택으로 오늘의 스타일을 부담 없이 만나보세요.</p>
+              <p class="hero__desc">무료배송 혜택으로 오늘의 스타일을 부담 없이<br> 만나보세요.</p>
               <a class="button button--primary" href="#event">
                 <span>혜택 보러가기</span>
                 <span class="button__arrow" aria-hidden="true">→</span>
