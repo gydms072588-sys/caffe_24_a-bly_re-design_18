@@ -1439,7 +1439,7 @@ body.is-menu-open {
   margin-top: -64px;
   filter: drop-shadow(0 34px 42px rgba(48, 24, 31, 0.26));
   rotate: 0deg;
-  translate: 2% 0;
+  translate: 0 0;
 }
 
 .download__phone-frame {
@@ -1457,102 +1457,78 @@ body.is-menu-open {
   inset: 0;
   z-index: 11;
   overflow: hidden;
-  background: transparent;
+  background: #ffffff;
   clip-path: polygon(
-    47% 7%,
-    92% 11%,
-    50% 91%,
-    4% 84%
+    45% 5.5%,
+    93% 10%,
+    51% 92%,
+    3% 84.5%
   );
-   background: #ffffff
+  pointer-events: none;
 }
+
 .phone-screen-track {
   position: absolute;
   top: 0;
-  left: -2%;
+  left: 0;
   display: flex;
-  width: 90%;
+  width: 100%;
   flex-direction: column;
   will-change: transform;
 }
 
 .phone-screen-track img {
   display: block;
-  width: 200%;
+  width: 100%;
   height: auto;
   flex: 0 0 auto;
 }
 
-.download__heart-main,
-.download__heart-small {
-  position: absolute;
-  object-fit: contain;
-  pointer-events: none;
-  transform-origin: center center;
-}
-
-.download__heart-main {
-  top: 52%;
-  left: 50%;
-  z-index: 5;
-  width: clamp(360px, 46vw, 620px);
-  opacity: 0;
-  visibility: hidden;
-  translate: -50% -50%;
-  filter: drop-shadow(0 24px 32px rgba(255, 79, 135, 0.12));
-}
-
-.download__heart-small {
-  display: none;
-  z-index: 3;
-  width: clamp(78px, 11vw, 150px);
-  opacity: 0;
-  filter: drop-shadow(0 18px 22px rgba(255, 79, 135, 0.13));
-}
-
-.download__heart-small--one {
-  top: 16%;
-  left: 21%;
-}
-
-.download__heart-small--two {
-  right: 15%;
-  bottom: 17%;
-}
-
 .download__object {
   position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: 7;
   object-fit: contain;
   opacity: 0;
   pointer-events: none;
   transform-origin: center center;
   filter: drop-shadow(0 18px 22px rgba(48, 24, 31, 0.16));
+  will-change: transform, opacity;
 }
 
 .download__object--perfume {
-  top: 42%;
-  left: 7%;
-  width: clamp(120px, 12.5vw, 182px);
+  --spread-x: -190px;
+  --spread-y: -20px;
+  --product-rotation: -6deg;
+
+  width: clamp(134px, 14vw, 205px);
 }
 
 .download__object--bag {
-  right: 7%;
-  bottom: 26%;
-  width: clamp(128px, 13.5vw, 190px);
+  --spread-x: -130px;
+  --spread-y: 130px;
+  --product-rotation: 5deg;
+
+  z-index: 8;
+  width: clamp(144px, 15vw, 214px);
 }
 
 .download__object--shirt {
-  top: 11%;
-  right: 10%;
-  width: clamp(152px, 16vw, 226px);
+  --spread-x: 170px;
+  --spread-y: -160px;
+  --product-rotation: 6deg;
+
+  width: clamp(170px, 18vw, 255px);
 }
 
 .download__object--gift {
-  right: 17%;
-  bottom: 5%;
+  --spread-x: 180px;
+  --spread-y: 120px;
+  --product-rotation: -4deg;
+
   z-index: 9;
-  width: clamp(136px, 14.5vw, 204px);
+  width: clamp(152px, 16vw, 230px);
 }
 
 .download__hover-hint {
@@ -1563,13 +1539,12 @@ body.is-menu-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 79, 135, 0.16);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--color-pink);
-  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #ff4f87;
+  padding: 8px 14px;
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
@@ -1582,27 +1557,6 @@ body.is-menu-open {
 .download__visual.is-expanded .download__hover-hint {
   transform: translate(-50%, 8px);
   opacity: 0;
-}
-
-.download__cursor-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  border-radius: 999px;
-  background: var(--color-pink);
-  color: var(--color-white);
-  padding: 0 12px;
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  box-shadow: 0 14px 28px rgba(255, 79, 135, 0.28);
-  will-change: transform, opacity;
 }
 
 /* Footer */
@@ -2298,30 +2252,23 @@ body.is-menu-open {
     min-height: 560px;
   }
 
-.download__mockup {
-  width: clamp(360px, 29vw, 460px);
-  margin-top: -64px;
-  rotate: 8deg;
-  translate: 2% 0;
-}
-  .download__heart-main {
-    width: min(82vw, 520px);
-  }
-
-  .download__heart-small--one {
-    left: 21%;
+  .download__mockup {
+    width: clamp(360px, 29vw, 460px);
+    margin-top: -64px;
+    rotate: 0deg;
+    translate: 0 0;
   }
 
   .download__object--perfume {
-    left: 12%;
+    --spread-x: -170px;
   }
 
   .download__object--shirt {
-    right: 10%;
+    --spread-x: 156px;
   }
 
   .download__object--bag {
-    right: 10%;
+    --spread-x: -124px;
   }
 
   .site-footer__top,
@@ -2494,40 +2441,35 @@ body.is-menu-open {
   .download__mockup {
     width: min(74vw, 300px);
     margin-top: 0;
-    rotate: 6deg;
-  }
-
-  .download__heart-main {
-    width: 112vw;
-  }
-
-  .download__heart-small--one {
-    top: 8%;
-    left: 16%;
-    width: 68px;
-  }
-
-  .download__heart-small--two,
-  .download__object--bag {
-    display: none;
+    rotate: 0deg;
   }
 
   .download__object--shirt {
-    top: 13%;
-    right: 0;
-    width: 120px;
+    --spread-x: 98px;
+    --spread-y: -118px;
+
+    width: 136px;
   }
 
   .download__object--perfume {
-    top: 42%;
-    left: 0;
-    width: 99px;
+    --spread-x: -98px;
+    --spread-y: -10px;
+
+    width: 105px;
+  }
+
+  .download__object--bag {
+    --spread-x: -82px;
+    --spread-y: 104px;
+
+    width: 112px;
   }
 
   .download__object--gift {
-    right: 12%;
-    bottom: 4%;
-    width: 115px;
+    --spread-x: 98px;
+    --spread-y: 98px;
+
+    width: 118px;
   }
 
   .store-button .material-symbols-outlined {

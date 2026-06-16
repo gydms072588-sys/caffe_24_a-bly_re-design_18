@@ -771,29 +771,15 @@ function initGsapAnimations() {
   const downloadVisual = document.querySelector(".download__visual");
 
   if (downloadVisual) {
-    const downloadHeart = downloadVisual.querySelector(".download__heart-main");
     const downloadPhone = downloadVisual.querySelector(".download__mockup");
     const downloadProducts = gsap.utils.toArray(".download__object");
     const phoneScreenTrack = downloadVisual.querySelector(".phone-screen-track");
-    const cursorLabel = downloadVisual.querySelector(".download__cursor-label");
     const canHoverDownloadVisual = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const benefitLabels = ["무료배송", "오늘만 특가", "찜하면 알림", "앱 전용 혜택", "빠른 쇼핑"];
     let isDownloadVisualReady = false;
     let isDownloadProductsOpen = false;
-    let downloadFloatingTweens = [];
-    let downloadProductTargets = new Map();
-    let cursorQuickX;
-    let cursorQuickY;
 
-    gsap.set(downloadHeart, { scale: 0.35, autoAlpha: 0 });
-    gsap.set(downloadPhone, { y: 60, scale: 0.96, opacity: 0 });
+    gsap.set(downloadPhone, { x: 0, y: 60, rotation: 0, scale: 0.96, opacity: 0 });
     gsap.set(phoneScreenTrack, { yPercent: 0 });
-
-    if (cursorLabel) {
-      gsap.set(cursorLabel, { xPercent: 0, yPercent: 0, scale: 0.96, opacity: 0 });
-      cursorQuickX = gsap.quickTo(cursorLabel, "x", { duration: 0.24, ease: "power3.out" });
-      cursorQuickY = gsap.quickTo(cursorLabel, "y", { duration: 0.24, ease: "power3.out" });
-    }
 
     const phoneScreenTween = gsap.to(phoneScreenTrack, {
       yPercent: -50,
@@ -805,95 +791,24 @@ function initGsapAnimations() {
 
     const getVisibleDownloadProducts = () => downloadProducts.filter((object) => object.offsetParent !== null);
 
-    const getCollapsedProductOffset = (object) => {
-      const phoneRect = downloadPhone.getBoundingClientRect();
-      const objectRect = object.getBoundingClientRect();
-
-      return {
-        x: phoneRect.left + phoneRect.width * 0.5 - (objectRect.left + objectRect.width * 0.5),
-        y: phoneRect.top + phoneRect.height * 0.5 - (objectRect.top + objectRect.height * 0.5)
-      };
+    const getProductCssNumber = (object, property) => {
+      const value = window.getComputedStyle(object).getPropertyValue(property);
+      return Number.parseFloat(value) || 0;
     };
-
-    const getRandomInRange = (min, max) => gsap.utils.random(min, max, 1);
-
-    const getProductSpreadTarget = () => ({
-      x: getRandomInRange(-12, 12),
-      y: getRandomInRange(-10, 10),
-      rotation: getRandomInRange(-3, 3)
-    });
 
     const clusterDownloadProducts = (duration = 0, opacity = 0) => {
-      getVisibleDownloadProducts().forEach((object) => {
-        const offset = getCollapsedProductOffset(object);
-
-        gsap.to(object, {
-          x: offset.x,
-          y: offset.y,
-          scale: 0.45,
-          opacity,
-          rotation: 0,
-          duration,
-          ease: duration ? "power3.inOut" : "power3.out",
-          overwrite: true
-        });
-      });
-    };
-
-    const stopDownloadProductFloating = () => {
-      downloadFloatingTweens.forEach((tween) => tween.kill());
-      downloadFloatingTweens = [];
-    };
-
-    const startDownloadProductFloating = () => {
-      stopDownloadProductFloating();
-
-      downloadFloatingTweens = getVisibleDownloadProducts().map((object, index) => {
-        const target = downloadProductTargets.get(object);
-        if (!target) return null;
-
-        return gsap.to(object, {
-          y: target.y + (index % 2 === 0 ? -4 : 4),
-          rotation: target.rotation + (index % 2 === 0 ? 0.5 : -0.5),
-          duration: 2.6 + index * 0.12,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut"
-        });
-      }).filter(Boolean);
-    };
-
-    const showDownloadCursorLabel = () => {
-      if (!cursorLabel) return;
-
-      cursorLabel.textContent = benefitLabels[Math.floor(Math.random() * benefitLabels.length)];
-      gsap.to(cursorLabel, {
-        scale: 1,
-        opacity: 0.9,
-        duration: 0.2,
-        ease: "power3.out",
+      gsap.to(getVisibleDownloadProducts(), {
+        x: 0,
+        y: 0,
+        xPercent: -50,
+        yPercent: -50,
+        scale: 0.45,
+        opacity,
+        rotation: 0,
+        duration,
+        ease: duration ? "power3.inOut" : "power3.out",
         overwrite: true
       });
-    };
-
-    const hideDownloadCursorLabel = () => {
-      if (!cursorLabel) return;
-
-      gsap.to(cursorLabel, {
-        scale: 0.96,
-        opacity: 0,
-        duration: 0.22,
-        ease: "power3.out",
-        overwrite: true
-      });
-    };
-
-    const moveDownloadCursorLabel = (event) => {
-      if (!cursorLabel || !cursorQuickX || !cursorQuickY) return;
-
-      const rect = downloadVisual.getBoundingClientRect();
-      cursorQuickX(event.clientX - rect.left + 24);
-      cursorQuickY(event.clientY - rect.top + 28);
     };
 
     const spreadDownloadProducts = () => {
@@ -901,36 +816,22 @@ function initGsapAnimations() {
 
       isDownloadProductsOpen = true;
       downloadVisual.classList.add("is-expanded");
-      stopDownloadProductFloating();
       phoneScreenTween.play();
 
-      gsap.timeline({ defaults: { overwrite: true } })
-        .to(downloadHeart, {
-          scale: 1.05,
-          autoAlpha: 0.75,
-          duration: 0.58,
-          ease: "back.out(1.4)"
-        })
-        .to(downloadHeart, {
-          scale: 1,
-          duration: 0.22,
-          ease: "power3.out"
-        }, "-=0.08");
-
       const visibleProducts = getVisibleDownloadProducts();
-      downloadProductTargets = new Map(visibleProducts.map((object) => [object, getProductSpreadTarget(object)]));
 
       gsap.to(visibleProducts, {
-        x: (index, object) => downloadProductTargets.get(object).x,
-        y: (index, object) => downloadProductTargets.get(object).y,
+        x: (index, object) => getProductCssNumber(object, "--spread-x"),
+        y: (index, object) => getProductCssNumber(object, "--spread-y"),
+        xPercent: -50,
+        yPercent: -50,
         scale: 1,
         opacity: 1,
-        rotation: (index, object) => downloadProductTargets.get(object).rotation,
-        duration: 0.7,
-        ease: "back.out(1.4)",
-        stagger: 0.06,
-        overwrite: true,
-        onComplete: startDownloadProductFloating
+        rotation: (index, object) => getProductCssNumber(object, "--product-rotation"),
+        duration: 0.75,
+        ease: "back.out(1.35)",
+        stagger: 0.07,
+        overwrite: true
       });
     };
 
@@ -939,29 +840,14 @@ function initGsapAnimations() {
 
       isDownloadProductsOpen = false;
       downloadVisual.classList.remove("is-expanded");
-      stopDownloadProductFloating();
       phoneScreenTween.pause();
-      hideDownloadCursorLabel();
 
-      gsap.to(downloadHeart, {
-        scale: 0.35,
-        autoAlpha: 0,
-        duration: 0.52,
-        ease: "power3.inOut",
-        overwrite: true
-      });
-
-      clusterDownloadProducts(0.68, 0);
+      clusterDownloadProducts(0.58, 0);
     };
 
-    const activateDownloadVisual = (event) => {
+    const activateDownloadVisual = () => {
       if (!isDownloadVisualReady) return;
 
-      if (event) {
-        moveDownloadCursorLabel(event);
-      }
-
-      showDownloadCursorLabel();
       spreadDownloadProducts();
     };
 
@@ -977,7 +863,7 @@ function initGsapAnimations() {
 
     downloadTimeline
       .to(downloadPhone, {
-        y: -56,
+        y: 0,
         scale: 1,
         opacity: 1,
         duration: 0.95,
@@ -985,7 +871,7 @@ function initGsapAnimations() {
       })
       .add(() => {
         gsap.to(downloadPhone, {
-          y: -64,
+          y: -8,
           duration: 2.6,
           repeat: -1,
           yoyo: true,
@@ -1002,7 +888,6 @@ function initGsapAnimations() {
       });
 
     if (canHoverDownloadVisual) {
-      downloadVisual.addEventListener("pointermove", moveDownloadCursorLabel);
       downloadVisual.addEventListener("mouseenter", activateDownloadVisual);
       downloadVisual.addEventListener("mouseleave", gatherDownloadProducts);
     } else {
@@ -1016,7 +901,14 @@ function initGsapAnimations() {
     }
 
     window.addEventListener("resize", () => {
-      if (!isDownloadProductsOpen) {
+      if (isDownloadProductsOpen) {
+        gsap.set(getVisibleDownloadProducts(), {
+          x: (index, object) => getProductCssNumber(object, "--spread-x"),
+          y: (index, object) => getProductCssNumber(object, "--spread-y"),
+          xPercent: -50,
+          yPercent: -50
+        });
+      } else {
         clusterDownloadProducts();
       }
     });
