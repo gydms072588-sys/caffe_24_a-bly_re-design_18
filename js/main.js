@@ -771,7 +771,7 @@ function initGsapAnimations() {
   const downloadVisual = document.querySelector(".download__visual");
 
   if (downloadVisual) {
-    const downloadPhone = downloadVisual.querySelector(".download__mockup");
+    const downloadPhone = downloadVisual.querySelector(".download__phone");
     const downloadProducts = gsap.utils.toArray(".download__object");
     const phoneScreenTrack = downloadVisual.querySelector(".phone-screen-track");
     const canHoverDownloadVisual = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -796,6 +796,12 @@ function initGsapAnimations() {
       return Number.parseFloat(value) || 0;
     };
 
+    const getProductSpreadTarget = (object) => ({
+      x: getProductCssNumber(object, "--spread-x") + gsap.utils.random(-30, 30, 1),
+      y: getProductCssNumber(object, "--spread-y") + gsap.utils.random(-26, 26, 1),
+      rotation: getProductCssNumber(object, "--product-rotation") + gsap.utils.random(-4, 4, 1)
+    });
+
     const clusterDownloadProducts = (duration = 0, opacity = 0) => {
       gsap.to(getVisibleDownloadProducts(), {
         x: 0,
@@ -819,15 +825,16 @@ function initGsapAnimations() {
       phoneScreenTween.play();
 
       const visibleProducts = getVisibleDownloadProducts();
+      const productTargets = new Map(visibleProducts.map((object) => [object, getProductSpreadTarget(object)]));
 
       gsap.to(visibleProducts, {
-        x: (index, object) => getProductCssNumber(object, "--spread-x"),
-        y: (index, object) => getProductCssNumber(object, "--spread-y"),
+        x: (index, object) => productTargets.get(object).x,
+        y: (index, object) => productTargets.get(object).y,
         xPercent: -50,
         yPercent: -50,
         scale: 1,
         opacity: 1,
-        rotation: (index, object) => getProductCssNumber(object, "--product-rotation"),
+        rotation: (index, object) => productTargets.get(object).rotation,
         duration: 0.75,
         ease: "back.out(1.35)",
         stagger: 0.07,

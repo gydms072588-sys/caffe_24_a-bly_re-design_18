@@ -1431,39 +1431,56 @@ body.is-menu-open {
   isolation: isolate;
 }
 
-.download__mockup {
+.download__phone {
   position: relative;
   z-index: 10;
   display: block;
-  width: clamp(360px, 29vw, 460px);
+  width: clamp(250px, 20vw, 320px);
+  aspect-ratio: 390 / 780;
   margin-top: -64px;
-  filter: drop-shadow(0 34px 42px rgba(48, 24, 31, 0.26));
-  rotate: 0deg;
-  translate: 0 0;
+  overflow: hidden;
+  border: 14px solid #111111;
+  border-radius: 46px;
+  background: #111111;
+  box-shadow:
+    0 34px 42px rgba(48, 24, 31, 0.26),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
-.download__phone-frame {
-  position: relative;
-  z-index: 10;
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
+.download__phone::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  z-index: 12;
+  width: 56px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.download__phone::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  right: calc(50% - 48px);
+  z-index: 12;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .phone-screen-mask {
   position: absolute;
-  inset: 0;
-  z-index: 11;
+  inset: 14px;
+  z-index: 9;
   overflow: hidden;
   background: #ffffff;
-  clip-path: polygon(
-    45% 5.5%,
-    93% 10%,
-    51% 92%,
-    3% 84.5%
-  );
+  border-radius: 32px;
   pointer-events: none;
 }
 
@@ -1499,15 +1516,15 @@ body.is-menu-open {
 
 .download__object--perfume {
   --spread-x: -190px;
-  --spread-y: -20px;
+  --spread-y: -30px;
   --product-rotation: -6deg;
 
   width: clamp(134px, 14vw, 205px);
 }
 
 .download__object--bag {
-  --spread-x: -130px;
-  --spread-y: 130px;
+  --spread-x: -140px;
+  --spread-y: 140px;
   --product-rotation: 5deg;
 
   z-index: 8;
@@ -1515,16 +1532,16 @@ body.is-menu-open {
 }
 
 .download__object--shirt {
-  --spread-x: 170px;
-  --spread-y: -160px;
+  --spread-x: 180px;
+  --spread-y: -170px;
   --product-rotation: 6deg;
 
   width: clamp(170px, 18vw, 255px);
 }
 
 .download__object--gift {
-  --spread-x: 180px;
-  --spread-y: 120px;
+  --spread-x: 190px;
+  --spread-y: 130px;
   --product-rotation: -4deg;
 
   z-index: 9;
@@ -2252,11 +2269,9 @@ body.is-menu-open {
     min-height: 560px;
   }
 
-  .download__mockup {
-    width: clamp(360px, 29vw, 460px);
+  .download__phone {
+    width: clamp(250px, 20vw, 320px);
     margin-top: -64px;
-    rotate: 0deg;
-    translate: 0 0;
   }
 
   .download__object--perfume {
@@ -2438,10 +2453,29 @@ body.is-menu-open {
     margin-top: 12px;
   }
 
-  .download__mockup {
-    width: min(74vw, 300px);
+  .download__phone {
+    width: min(66vw, 250px);
     margin-top: 0;
-    rotate: 0deg;
+    border-width: 11px;
+    border-radius: 38px;
+  }
+
+  .download__phone::before {
+    top: 10px;
+    width: 44px;
+    height: 5px;
+  }
+
+  .download__phone::after {
+    top: 9px;
+    right: calc(50% - 39px);
+    width: 7px;
+    height: 7px;
+  }
+
+  .phone-screen-mask {
+    inset: 11px;
+    border-radius: 27px;
   }
 
   .download__object--shirt {
