@@ -566,29 +566,41 @@ function initEventInteraction() {
 
   if (!items.length || !main || !image || !label || !title) return;
 
+  const activateItem = (item) => {
+    items.forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
+    });
+
+    item.classList.add("is-active");
+    item.setAttribute("aria-pressed", "true");
+
+    main.classList.add("is-changing");
+
+    const nextImage = item.dataset.eventImage;
+    const nextLabel = item.dataset.eventLabel;
+    const nextTitle = item.dataset.eventTitle;
+
+    window.setTimeout(() => {
+      if (nextImage) image.src = nextImage;
+      if (nextTitle) image.alt = `${nextTitle} 대표 이미지`;
+      if (nextLabel) label.textContent = nextLabel;
+      if (nextTitle) title.textContent = nextTitle;
+      main.classList.remove("is-changing");
+    }, prefersReducedMotion ? 0 : 160);
+  };
+
   items.forEach((item) => {
-    item.addEventListener("click", () => {
-      items.forEach((button) => {
-        button.classList.remove("is-active");
-        button.setAttribute("aria-pressed", "false");
-      });
+    item.addEventListener("click", (event) => {
+      if (event.target.closest(".event-item__arrow")) return;
+      activateItem(item);
+    });
 
-      item.classList.add("is-active");
-      item.setAttribute("aria-pressed", "true");
-
-      main.classList.add("is-changing");
-
-      const nextImage = item.dataset.eventImage;
-      const nextLabel = item.dataset.eventLabel;
-      const nextTitle = item.dataset.eventTitle;
-
-      window.setTimeout(() => {
-        if (nextImage) image.src = nextImage;
-        if (nextTitle) image.alt = `${nextTitle} 대표 이미지`;
-        if (nextLabel) label.textContent = nextLabel;
-        if (nextTitle) title.textContent = nextTitle;
-        main.classList.remove("is-changing");
-      }, prefersReducedMotion ? 0 : 160);
+    item.addEventListener("keydown", (event) => {
+      if (event.target.closest(".event-item__arrow")) return;
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      activateItem(item);
     });
   });
 }

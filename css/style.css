@@ -1251,14 +1251,17 @@ body.is-menu-open {
   border-bottom: 1px solid var(--color-line);
   border-radius: 12px;
   padding: 12px 8px;
+  cursor: pointer;
   text-align: left;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .event-item:hover,
+.event-item:focus-visible,
 .event-item.is-active {
   background: var(--color-pink-soft);
   transform: translateX(-4px);
+  outline: none;
 }
 
 .event-item img {
