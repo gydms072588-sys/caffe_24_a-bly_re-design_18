@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ABLY 상품 상세 디자인 페이지">
+  <title>ABLY | 상품 상세</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="ABLY 홈"><img src="assets/images/logo/logo.png" alt="ABLY"></a>
+      <nav class="site-header__nav" aria-label="주요 메뉴">
+        <ul class="gnb">
+          <li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="board-list.html">이벤트</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__tools">
+        <form class="search-form" role="search" aria-label="상품 검색" data-search-form>
+          <label class="sr-only" for="site-search">검색어</label>
+          <input id="site-search" name="search" type="search" placeholder="무료배송 블라우스" autocomplete="off" data-search-input>
+          <button class="search-clear-button" type="button" aria-label="검색어 지우기" data-search-clear><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+          <button class="icon-button" type="submit" aria-label="검색"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg></button>
+          <div class="search-panel" data-search-panel><ul data-search-suggestion-list></ul></div>
+        </form>
+        <a class="header-icon-button site-header__icon" href="login.html" aria-label="로그인"><span class="material-symbols-outlined" aria-hidden="true">person</span></a>
+        <a class="header-icon-button site-header__icon" href="cart.html" aria-label="장바구니"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
+      <a href="index.html#hero">오늘의 발견</a>
+      <a href="category.html">카테고리</a>
+      <a href="index.html#style">브랜드</a>
+      <a href="board-list.html">이벤트</a>
+      <a href="login.html">로그인</a>
+      <a href="cart.html">장바구니</a>
+    </nav>
+  </header>
+
+  <main id="main" class="shop-page detail-page">
+    <nav class="shop-breadcrumb" aria-label="breadcrumb">
+      <a href="index.html">홈</a><span>/</span><a href="category.html">상의</a><span>/</span><strong>Airy Cotton Blouse</strong>
+    </nav>
+
+    <section class="detail-hero" aria-labelledby="detail-title">
+      <div class="detail-gallery">
+        <figure class="detail-gallery__main"><img src="assets/images/category/product_01.jpg" alt="Airy Cotton Blouse 착용 이미지"></figure>
+        <div class="detail-gallery__thumbs" aria-label="상품 이미지 목록">
+          <button type="button" aria-label="상품 이미지 1"><img src="assets/images/category/product_01.jpg" alt=""></button>
+          <button type="button" aria-label="상품 이미지 2"><img src="assets/images/category/product_02.jpg" alt=""></button>
+          <button type="button" aria-label="상품 이미지 3"><img src="assets/images/trend/trend_item_01.png" alt=""></button>
+        </div>
+      </div>
+
+      <div class="detail-summary">
+        <p class="shop-eyebrow">Daily Muse</p>
+        <h1 id="detail-title">Airy Cotton Blouse</h1>
+        <p class="detail-summary__desc">가볍게 흐르는 핏과 은은한 핑크 무드로 데일리룩부터 출근룩까지 자연스럽게 어울리는 블라우스입니다.</p>
+        <div class="detail-price"><strong>29,800원</strong><del>42,000원</del><span>29%</span></div>
+        <div class="detail-badges"><span>무료배송</span><span>BEST</span><span>당일출고</span></div>
+
+        <div class="option-group">
+          <p>Color</p>
+          <div class="swatch-list" aria-label="색상 선택">
+            <button type="button" class="is-active" style="--swatch:#f7c8d0" aria-label="Pink"></button>
+            <button type="button" style="--swatch:#f6eee9" aria-label="Cream"></button>
+            <button type="button" style="--swatch:#202020" aria-label="Black"></button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <p>Size</p>
+          <div class="size-list" aria-label="사이즈 선택">
+            <button type="button">S</button><button type="button" class="is-active">M</button><button type="button">L</button>
+          </div>
+        </div>
+
+        <div class="quantity-row">
+          <span>수량</span>
+          <div class="quantity-control"><button type="button">-</button><strong>1</strong><button type="button">+</button></div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="button button--primary" href="#">구매하기</a>
+          <a class="button button--ghost" href="cart.html">장바구니</a>
+          <button class="icon-like" type="button" aria-label="관심상품"><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+        </div>
+
+        <ul class="delivery-note">
+          <li><strong>배송</strong><span>무료배송 / 평균 2~3일 소요</span></li>
+          <li><strong>혜택</strong><span>앱 첫 구매 쿠폰, 리뷰 적립금 지급</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="detail-tabs" aria-label="상품 상세 정보">
+      <div class="tab-bar"><a href="#detail-info">상세정보</a><a href="#detail-size">사이즈</a><a href="#detail-review">리뷰</a><a href="#detail-qna">문의</a></div>
+      <article id="detail-info" class="detail-panel">
+        <h2>부드러운 일상 블라우스</h2>
+        <p>밝은 톤의 데님, 슬랙스, 스커트와 잘 어울리는 기본 아이템입니다. 카페24 상세 페이지에 상품 설명과 운영 이미지를 이어 붙이기 쉬운 단순한 구조로 구성했습니다.</p>
+        <img src="assets/images/category/category_banner.jpg" alt="블라우스 스타일링 이미지">
+      </article>
+      <article id="detail-size" class="detail-panel detail-table">
+        <h2>사이즈 안내</h2>
+        <table><thead><tr><th>Size</th><th>어깨</th><th>가슴</th><th>총장</th></tr></thead><tbody><tr><td>S</td><td>37</td><td>47</td><td>58</td></tr><tr><td>M</td><td>38</td><td>49</td><td>60</td></tr><tr><td>L</td><td>39</td><td>51</td><td>62</td></tr></tbody></table>
+      </article>
+      <article id="detail-review" class="detail-panel review-list">
+        <h2>리뷰 128</h2>
+        <div><strong>핏이 예쁘고 가벼워요</strong><p>출근룩으로 입기 좋고 색감이 화면 그대로예요.</p></div>
+        <div><strong>봄 여름 데일리템</strong><p>스커트와 매치했을 때 분위기가 부드럽습니다.</p></div>
+      </article>
+      <article id="detail-qna" class="detail-panel board-mini">
+        <h2>상품 문의</h2>
+        <p>배송, 옵션, 재입고 문의를 남길 수 있는 영역입니다.</p>
+        <a class="button button--ghost" href="board-write.html">문의 작성</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top"><a class="site-footer__logo" href="index.html" aria-label="ABLY 홈">ABLY</a><nav class="site-footer__nav" aria-label="푸터 메뉴"><a href="#">회사소개</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">위치기반서비스 이용약관</a><a href="#">제휴문의</a><a href="#">채용안내</a></nav></div>
+      <div class="site-footer__bottom"><address>에이블리코퍼레이션(주) 대표 강석훈 | 서울특별시 강남구 테헤란로 142</address><small>© ABLY Corp. All rights reserved.</small></div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

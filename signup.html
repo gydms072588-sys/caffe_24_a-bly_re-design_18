@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ABLY 회원가입 디자인 페이지">
+  <title>ABLY | 회원가입</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header" data-header><div class="site-header__inner"><a class="site-header__logo" href="index.html" aria-label="ABLY 홈"><img src="assets/images/logo/logo.png" alt="ABLY"></a><nav class="site-header__nav" aria-label="주요 메뉴"><ul class="gnb"><li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li><li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li><li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li><li class="gnb__item"><a class="gnb__link" href="board-list.html">이벤트</a></li></ul></nav><div class="site-header__tools"><a class="header-icon-button site-header__icon" href="login.html" aria-label="로그인"><span class="material-symbols-outlined" aria-hidden="true">person</span></a><a class="header-icon-button site-header__icon" href="cart.html" aria-label="장바구니"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a><button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><span></span><span></span><span></span></button></div></div><nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
+      <a href="index.html#hero">오늘의 발견</a>
+      <a href="category.html">카테고리</a>
+      <a href="index.html#style">브랜드</a>
+      <a href="board-list.html">이벤트</a>
+      <a href="login.html">로그인</a>
+      <a href="cart.html">장바구니</a>
+    </nav></header>
+  <main id="main" class="shop-page auth-page">
+    <section class="auth-card auth-card--wide" aria-labelledby="signup-title">
+      <p class="shop-eyebrow">Join ABLY</p>
+      <h1 id="signup-title">회원가입</h1>
+      <p>관심 스타일을 선택해 취향에 맞는 상품과 이벤트를 받아보세요.</p>
+      <form class="auth-form auth-form--grid">
+        <label>아이디<input type="text" placeholder="영문/숫자 6자 이상"></label>
+        <label>이메일<input type="email" placeholder="ably@example.com"></label>
+        <label>비밀번호<input type="password" placeholder="비밀번호"></label>
+        <label>비밀번호 확인<input type="password" placeholder="비밀번호 확인"></label>
+      </form>
+      <div class="preference-block">
+        <h2>스타일 관심사</h2>
+        <div class="chip-select"><label><input type="checkbox" checked> 데일리룩</label><label><input type="checkbox"> 출근룩</label><label><input type="checkbox" checked> 데이트룩</label><label><input type="checkbox"> 스트릿</label><label><input type="checkbox"> 러블리</label><label><input type="checkbox"> 미니멀</label><label><input type="checkbox"> 캐주얼</label></div>
+      </div>
+      <div class="preference-block">
+        <h2>선호 카테고리</h2>
+        <div class="chip-select"><label><input type="checkbox" checked> 상의</label><label><input type="checkbox"> 아우터</label><label><input type="checkbox"> 원피스</label><label><input type="checkbox"> 스커트</label><label><input type="checkbox"> 가방</label><label><input type="checkbox"> 뷰티</label></div>
+      </div>
+      <div class="terms-box"><label><input type="checkbox" checked> 전체 약관에 동의합니다.</label><label><input type="checkbox" checked> 개인정보 수집 및 이용 동의</label><label><input type="checkbox"> 쇼핑 혜택 및 이벤트 알림 수신</label></div>
+      <button class="button button--primary" type="button">가입하기</button>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__top"><a class="site-footer__logo" href="index.html">ABLY</a><nav class="site-footer__nav" aria-label="푸터 메뉴"><a href="#">회사소개</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">위치기반서비스 이용약관</a><a href="#">제휴문의</a><a href="#">채용안내</a></nav></div><div class="site-footer__bottom"><address>에이블리코퍼레이션(주)</address><small>© ABLY Corp.</small></div></div></footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

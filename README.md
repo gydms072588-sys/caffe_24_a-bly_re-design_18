@@ -50,3 +50,13 @@ assets/videos/
 - `initMobileMenu()`: 모바일 메뉴 접근성 상태 제어
 
 `prefers-reduced-motion` 사용자는 CSS와 JS에서 모션이 최소화됩니다.
+
+## 2026-06-19 작업 기록
+
+- 카페24 적용용 정적 보조 페이지를 추가했습니다.
+- 추가 페이지: `product-detail.html`, `cart.html`, `login.html`, `signup.html`, `board-list.html`, `board-view.html`, `board-write.html`
+- 새 페이지는 기존 헤더/푸터 톤, 핑크 포인트 컬러, 카드 반경, 버튼 스타일을 유지합니다.
+- 상품 상세, 장바구니, 로그인, 회원가입, 게시판 목록/상세/작성 화면은 기능 없이 디자인 UI로만 구성했습니다.
+- 외부 placeholder 이미지는 사용하지 않고 `assets/images/category`, `assets/images/event`, `assets/images/logo` 내부 자산을 재사용했습니다.
+- `css/style.css` 하단에 `shop-page`, `detail-*`, `cart-*`, `auth-*`, `board-*` 계열의 정적 페이지 스타일과 반응형 규칙을 추가했습니다.
+- 섹션4 앱 다운로드 핸드폰 이미지는 `assets/images/app/iphone_15.png` 완성형 목업을 사용합니다.
