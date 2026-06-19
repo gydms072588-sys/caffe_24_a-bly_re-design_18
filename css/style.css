@@ -295,6 +295,11 @@ body.is-menu-open {
   color: var(--color-pink);
 }
 
+.site-header__nav .gnb__link[href="category.html"],
+.site-header__nav .gnb__link[href="board-list.html"] {
+  color: var(--color-pink);
+}
+
 .gnb__link:hover::after,
 .gnb__link:focus-visible::after,
 .gnb__link.is-active::after {
@@ -1766,20 +1771,26 @@ body.is-menu-open {
 
 .circle-category {
   display: grid;
-  grid-template-columns: repeat(7, minmax(100px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: start;
+  gap: 0;
+  width: 100%;
   margin: 56px 0 36px;
   border-bottom: 1px solid var(--color-line);
   padding-bottom: 34px;
 }
 
 .circle-category__item {
-  display: grid;
-  justify-items: center;
-  gap: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
   color: #4a403d;
   font-weight: 600;
-  transition: color 0.2s ease, transform 0.2s ease;
+  text-align: center;
+  transition: color 0.2s ease;
 }
 
 .circle-category__item img {
@@ -1788,17 +1799,24 @@ body.is-menu-open {
   border: 2px solid transparent;
   border-radius: 999px;
   background: var(--color-cream);
+  box-sizing: border-box;
   object-fit: cover;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.25s ease;
 }
 
+.circle-category__item span {
+  display: block;
+  min-height: 24px;
+  margin-top: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .circle-category__item:hover {
-  transform: translateY(-4px);
   color: var(--color-pink);
 }
 
-.circle-category__item:hover img,
-.circle-category__item.is-active img {
+.circle-category__item:hover img {
   border-color: var(--color-pink);
   box-shadow: 0 12px 28px rgba(255, 79, 135, 0.18);
 }
@@ -1937,6 +1955,12 @@ body.is-menu-open {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.product-card:first-child h3,
+.product-card:hover h3 {
+  color: var(--color-pink);
 }
 
 .product-card strong {
@@ -3091,6 +3115,15 @@ a.board-row:hover strong {
   justify-content: center;
   gap: 8px;
   padding: 24px;
+}
+
+.pagination a.is-active,
+.pagination a.is-active:hover,
+.pagination .is-active,
+.pagination .is-active:hover {
+  border-color: var(--color-pink);
+  background: var(--color-pink);
+  color: var(--color-white);
 }
 
 .board-view {

@@ -13,21 +13,86 @@
   <a class="skip-link" href="#main">본문 바로가기</a>
   <header class="site-header" data-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html" aria-label="ABLY 홈"><img src="assets/images/logo/logo.png" alt="ABLY"></a>
-      <nav class="site-header__nav" aria-label="주요 메뉴"><ul class="gnb"><li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li><li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li><li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li><li class="gnb__item"><a class="gnb__link" href="board-list.html">이벤트</a></li></ul></nav>
+      <a class="site-header__logo" href="index.html" aria-label="ABLY 홈">
+        <img src="assets/images/logo/logo.png" alt="ABLY">
+      </a>
+
+      <nav class="site-header__nav" aria-label="주요 메뉴">
+        <ul class="gnb">
+          <li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="board-list.html">이벤트</a></li>
+        </ul>
+      </nav>
+
       <div class="site-header__tools">
-        <a class="header-icon-button site-header__icon" href="login.html" aria-label="로그인"><span class="material-symbols-outlined" aria-hidden="true">person</span></a>
-        <a class="header-icon-button site-header__icon" href="cart.html" aria-label="장바구니"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
-        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><span></span><span></span><span></span></button>
+        <form class="search-form" role="search" aria-label="상품 검색" data-search-form>
+          <label class="sr-only" for="site-search">검색어</label>
+          <input id="site-search" name="search" type="search" placeholder="취향 저격 드무드레스" autocomplete="off" data-search-input>
+          <button class="search-clear-button" type="button" aria-label="검색어 지우기" data-search-clear>
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          </button>
+          <button class="icon-button" type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+          </button>
+          <div class="search-panel" data-search-panel>
+            <ul data-search-suggestion-list></ul>
+          </div>
+        </form>
+        <a class="header-icon-button site-header__icon" href="login.html" aria-label="로그인 및 마이페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+        </a>
+        <a class="header-icon-button site-header__icon" href="cart.html" aria-label="장바구니 및 구매 페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+        </a>
+        <div class="language-switcher site-header__icon">
+          <button class="header-icon-button" type="button" aria-label="언어 변경" aria-expanded="false" data-language-button>
+            <span class="material-symbols-outlined" aria-hidden="true">globe</span>
+          </button>
+
+          <div class="language-menu" data-language-menu>
+            <button type="button" data-lang="ko">한국어</button>
+            <button type="button" data-lang="en">English</button>
+            <button type="button" data-lang="ja">日本語</button>
+            <button type="button" data-lang="zh">中文</button>
+          </div>
+        </div>
+        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
+
     <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
       <a href="index.html#hero">오늘의 발견</a>
       <a href="category.html">카테고리</a>
       <a href="index.html#style">브랜드</a>
       <a href="board-list.html">이벤트</a>
-      <a href="login.html">로그인</a>
-      <a href="cart.html">장바구니</a>
+
+      <div class="mobile-nav__actions" aria-label="모바일 사용자 메뉴">
+        <a class="mobile-nav__action" href="login.html" aria-label="로그인 및 마이페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <span>마이페이지</span>
+        </a>
+
+        <a class="mobile-nav__action" href="cart.html" aria-label="장바구니 및 구매 페이지">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+          <span>장바구니</span>
+        </a>
+
+        <div class="mobile-language">
+          <p class="mobile-language__title">Language</p>
+          <div class="mobile-language__buttons">
+            <button type="button" data-lang="ko">KR</button>
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="ja">JP</button>
+            <button type="button" data-lang="zh">CN</button>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -65,7 +130,36 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__top"><a class="site-footer__logo" href="index.html">ABLY</a><nav class="site-footer__nav" aria-label="푸터 메뉴"><a href="#">회사소개</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">위치기반서비스 이용약관</a><a href="#">제휴문의</a><a href="#">채용안내</a></nav></div><div class="site-footer__bottom"><address>에이블리코퍼레이션(주) | 고객센터 1577-9383</address><small>© ABLY Corp. All rights reserved.</small></div></div></footer>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <a class="site-footer__logo" href="index.html" aria-label="ABLY 홈">ABLY</a>
+        <nav class="site-footer__nav" aria-label="푸터 메뉴">
+          <a href="#">회사소개</a>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">위치기반서비스 이용약관</a>
+          <a href="#">제휴문의</a>
+          <a href="#">채용안내</a>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <address>
+          에이블리코퍼레이션(주) 대표 강석훈 | 사업자등록번호 220-88-01012 | 통신판매업신고 2020-서울강남-02369<br>
+          서울특별시 강남구 테헤란로 142, 9층 | 고객센터 1577-9383 (평일 09:00 - 18:00)
+        </address>
+        <small>© ABLY Corp. All rights reserved.</small>
+      </div>
+
+      <ul class="social-list" aria-label="소셜 채널">
+        <li><a href="#" aria-label="인스타그램">IG</a></li>
+        <li><a href="#" aria-label="유튜브">YT</a></li>
+        <li><a href="#" aria-label="페이스북">FB</a></li>
+        <li><a href="#" aria-label="카카오톡">KO</a></li>
+      </ul>
+    </div>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 </html>
