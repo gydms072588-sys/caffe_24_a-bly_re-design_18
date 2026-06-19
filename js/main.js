@@ -772,22 +772,20 @@ function initGsapAnimations() {
 
   if (downloadVisual) {
     const downloadPhone = downloadVisual.querySelector(".download__phone");
-    const downloadProducts = gsap.utils.toArray(".download__object");
-    const phoneScreenTrack = downloadVisual.querySelector(".phone-screen-track");
+    const downloadHeart = downloadVisual.querySelector(".download__heart-bg");
+    const downloadProducts = gsap.utils.toArray(downloadVisual.querySelectorAll(".download__object"));
     const canHoverDownloadVisual = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     let isDownloadVisualReady = false;
     let isDownloadProductsOpen = false;
+    let heartFloatTween = null;
+    let productFloatTweens = [];
+
+    if (!downloadPhone) return;
 
     gsap.set(downloadPhone, { x: 0, y: 60, rotation: 0, scale: 0.96, opacity: 0 });
-    gsap.set(phoneScreenTrack, { yPercent: 0 });
-
-    const phoneScreenTween = gsap.to(phoneScreenTrack, {
-      yPercent: -50,
-      duration: 28,
-      repeat: -1,
-      ease: "none",
-      paused: true
-    });
+    if (downloadHeart) {
+      gsap.set(downloadHeart, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.65, opacity: 0 });
+    }
 
     const getVisibleDownloadProducts = () => downloadProducts.filter((object) => object.offsetParent !== null);
 
@@ -797,13 +795,21 @@ function initGsapAnimations() {
     };
 
     const getProductSpreadTarget = (object) => ({
-      x: getProductCssNumber(object, "--spread-x") + gsap.utils.random(-30, 30, 1),
-      y: getProductCssNumber(object, "--spread-y") + gsap.utils.random(-26, 26, 1),
-      rotation: getProductCssNumber(object, "--product-rotation") + gsap.utils.random(-4, 4, 1)
+      x: getProductCssNumber(object, "--spread-x"),
+      y: getProductCssNumber(object, "--spread-y"),
+      rotation: getProductCssNumber(object, "--product-rotation")
     });
 
+    const killDownloadFloating = () => {
+      heartFloatTween?.kill();
+      heartFloatTween = null;
+      productFloatTweens.forEach((tween) => tween.kill());
+      productFloatTweens = [];
+    };
+
     const clusterDownloadProducts = (duration = 0, opacity = 0) => {
-      gsap.to(getVisibleDownloadProducts(), {
+      const products = getVisibleDownloadProducts();
+      const state = {
         x: 0,
         y: 0,
         xPercent: -50,
@@ -811,21 +817,111 @@ function initGsapAnimations() {
         scale: 0.45,
         opacity,
         rotation: 0,
-        duration,
-        ease: duration ? "power3.inOut" : "power3.out",
         overwrite: true
+      };
+
+      if (duration) {
+        gsap.to(products, {
+          ...state,
+          duration,
+          ease: "power3.inOut"
+        });
+      } else {
+        gsap.set(products, state);
+      }
+    };
+
+    const hideDownloadHeart = (duration = 0) => {
+      const state = {
+        xPercent: -50,
+        yPercent: -50,
+        x: 0,
+        y: 0,
+        scale: 0.65,
+        opacity: 0,
+        overwrite: true
+      };
+
+      if (!downloadHeart) return;
+
+      if (duration) {
+        gsap.to(downloadHeart, {
+          ...state,
+          duration,
+          ease: "power3.out"
+        });
+      } else {
+        gsap.set(downloadHeart, state);
+      }
+    };
+
+    const floatDownloadHeart = () => {
+      if (!downloadHeart || !isDownloadProductsOpen) return;
+
+      heartFloatTween = gsap.to(downloadHeart, {
+        y: -6,
+        duration: 3.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        overwrite: "auto"
+      });
+    };
+
+    const floatDownloadProducts = (products) => {
+      if (!isDownloadProductsOpen) return;
+
+      const floatYValues = [-6, -4, -5, -7];
+      const floatDurations = [3.2, 3.6, 3.4, 3.8];
+
+      productFloatTweens = products.map((object, index) => {
+        const target = getProductSpreadTarget(object);
+
+        return gsap.to(object, {
+          y: target.y + floatYValues[index],
+          duration: floatDurations[index],
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          overwrite: "auto"
+        });
       });
     };
 
     const spreadDownloadProducts = () => {
-      if (!isDownloadVisualReady) return;
+      if (!isDownloadVisualReady || isDownloadProductsOpen) return;
 
       isDownloadProductsOpen = true;
       downloadVisual.classList.add("is-expanded");
-      phoneScreenTween.play();
+      killDownloadFloating();
 
       const visibleProducts = getVisibleDownloadProducts();
       const productTargets = new Map(visibleProducts.map((object) => [object, getProductSpreadTarget(object)]));
+
+      gsap.set(visibleProducts, {
+        x: 0,
+        y: 0,
+        xPercent: -50,
+        yPercent: -50,
+        scale: 0.45,
+        opacity: 0,
+        rotation: 0
+      });
+
+      if (downloadHeart) {
+        gsap.to(downloadHeart, {
+          xPercent: -50,
+          yPercent: -50,
+          x: 0,
+          y: 0,
+          scale: 1,
+          opacity: 0.64,
+          duration: 0.78,
+          ease: "back.out(1.3)",
+          overwrite: true,
+          onComplete: floatDownloadHeart
+        });
+      }
 
       gsap.to(visibleProducts, {
         x: (index, object) => productTargets.get(object).x,
@@ -838,7 +934,8 @@ function initGsapAnimations() {
         duration: 0.75,
         ease: "back.out(1.35)",
         stagger: 0.07,
-        overwrite: true
+        overwrite: true,
+        onComplete: () => floatDownloadProducts(visibleProducts)
       });
     };
 
@@ -847,9 +944,10 @@ function initGsapAnimations() {
 
       isDownloadProductsOpen = false;
       downloadVisual.classList.remove("is-expanded");
-      phoneScreenTween.pause();
+      killDownloadFloating();
 
       clusterDownloadProducts(0.58, 0);
+      hideDownloadHeart(0.5);
     };
 
     const activateDownloadVisual = () => {
@@ -858,7 +956,10 @@ function initGsapAnimations() {
       spreadDownloadProducts();
     };
 
-    requestAnimationFrame(() => clusterDownloadProducts(0, 0));
+    requestAnimationFrame(() => {
+      clusterDownloadProducts(0, 0);
+      hideDownloadHeart(0);
+    });
 
     const downloadTimeline = gsap.timeline({
       scrollTrigger: {
@@ -891,32 +992,39 @@ function initGsapAnimations() {
 
         if (canHoverDownloadVisual && downloadVisual.matches(":hover")) {
           activateDownloadVisual();
+        } else if (!canHoverDownloadVisual) {
+          activateDownloadVisual();
         }
       });
 
     if (canHoverDownloadVisual) {
       downloadVisual.addEventListener("mouseenter", activateDownloadVisual);
       downloadVisual.addEventListener("mouseleave", gatherDownloadProducts);
-    } else {
-      downloadVisual.addEventListener("click", () => {
-        if (isDownloadProductsOpen) {
-          gatherDownloadProducts();
-        } else {
-          spreadDownloadProducts();
-        }
-      });
     }
 
     window.addEventListener("resize", () => {
       if (isDownloadProductsOpen) {
-        gsap.set(getVisibleDownloadProducts(), {
+        const visibleProducts = getVisibleDownloadProducts();
+
+        killDownloadFloating();
+        gsap.set(visibleProducts, {
           x: (index, object) => getProductCssNumber(object, "--spread-x"),
           y: (index, object) => getProductCssNumber(object, "--spread-y"),
           xPercent: -50,
-          yPercent: -50
+          yPercent: -50,
+          scale: 1,
+          opacity: 1,
+          rotation: (index, object) => getProductCssNumber(object, "--product-rotation")
         });
+        if (downloadHeart) {
+          gsap.set(downloadHeart, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1, opacity: 0.64 });
+        }
+        floatDownloadHeart();
+        floatDownloadProducts(visibleProducts);
       } else {
+        killDownloadFloating();
         clusterDownloadProducts();
+        hideDownloadHeart();
       }
     });
   }

@@ -1431,74 +1431,38 @@ body.is-menu-open {
   isolation: isolate;
 }
 
+.download__heart-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: clamp(380px, 52vw, 720px);
+  max-width: 112%;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
 .download__phone {
   position: relative;
   z-index: 10;
   display: block;
-  width: clamp(250px, 20vw, 320px);
-  aspect-ratio: 390 / 780;
+  width: clamp(360px, 30vw, 520px);
+  aspect-ratio: 768 / 954;
   margin-top: -64px;
-  overflow: hidden;
-  border: 14px solid #111111;
-  border-radius: 46px;
-  background: #111111;
-  box-shadow:
-    0 34px 42px rgba(48, 24, 31, 0.26),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  box-sizing: border-box;
   pointer-events: none;
+  filter: drop-shadow(0 34px 42px rgba(48, 24, 31, 0.26));
 }
 
-.download__phone::before {
-  content: "";
+.download__phone-img {
   position: absolute;
-  top: 12px;
-  left: 50%;
-  z-index: 12;
-  width: 56px;
-  height: 6px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.download__phone::after {
-  content: "";
-  position: absolute;
-  top: 11px;
-  right: calc(50% - 48px);
-  z-index: 12;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.phone-screen-mask {
-  position: absolute;
-  inset: 14px;
-  z-index: 9;
-  overflow: hidden;
-  background: #ffffff;
-  border-radius: 32px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   pointer-events: none;
-}
-
-.phone-screen-track {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  will-change: transform;
-}
-
-.phone-screen-track img {
-  display: block;
-  width: 100%;
-  height: auto;
-  flex: 0 0 auto;
 }
 
 .download__object {
@@ -1515,36 +1479,35 @@ body.is-menu-open {
 }
 
 .download__object--perfume {
-  --spread-x: -190px;
-  --spread-y: -30px;
-  --product-rotation: -6deg;
+  --spread-x: -250px;
+  --spread-y: -42px;
+  --product-rotation: -3deg;
 
   width: clamp(134px, 14vw, 205px);
 }
 
 .download__object--bag {
-  --spread-x: -140px;
-  --spread-y: 140px;
-  --product-rotation: 5deg;
+  --spread-x: -205px;
+  --spread-y: 170px;
+  --product-rotation: 3deg;
 
-  z-index: 8;
   width: clamp(144px, 15vw, 214px);
 }
 
 .download__object--shirt {
-  --spread-x: 180px;
-  --spread-y: -170px;
-  --product-rotation: 6deg;
+  --spread-x: 260px;
+  --spread-y: -178px;
+  --product-rotation: 3deg;
 
   width: clamp(170px, 18vw, 255px);
 }
 
 .download__object--gift {
-  --spread-x: 190px;
-  --spread-y: 130px;
-  --product-rotation: -4deg;
+  --spread-x: 240px;
+  --spread-y: 145px;
+  --product-rotation: -3deg;
 
-  z-index: 9;
+  z-index: 11;
   width: clamp(152px, 16vw, 230px);
 }
 
@@ -2269,21 +2232,25 @@ body.is-menu-open {
     min-height: 560px;
   }
 
+  .download__heart-bg {
+    width: min(92vw, 650px);
+  }
+
   .download__phone {
-    width: clamp(250px, 20vw, 320px);
-    margin-top: -64px;
+    width: clamp(330px, 46vw, 470px);
+    margin-top: -50px;
   }
 
   .download__object--perfume {
-    --spread-x: -170px;
+    --spread-x: -210px;
   }
 
   .download__object--shirt {
-    --spread-x: 156px;
+    --spread-x: 218px;
   }
 
   .download__object--bag {
-    --spread-x: -124px;
+    --spread-x: -174px;
   }
 
   .site-footer__top,
@@ -2453,54 +2420,38 @@ body.is-menu-open {
     margin-top: 12px;
   }
 
+  .download__heart-bg {
+    width: min(96vw, 440px);
+  }
+
   .download__phone {
-    width: min(66vw, 250px);
+    width: min(82vw, 330px);
     margin-top: 0;
-    border-width: 11px;
-    border-radius: 38px;
-  }
-
-  .download__phone::before {
-    top: 10px;
-    width: 44px;
-    height: 5px;
-  }
-
-  .download__phone::after {
-    top: 9px;
-    right: calc(50% - 39px);
-    width: 7px;
-    height: 7px;
-  }
-
-  .phone-screen-mask {
-    inset: 11px;
-    border-radius: 27px;
   }
 
   .download__object--shirt {
-    --spread-x: 98px;
-    --spread-y: -118px;
+    --spread-x: 128px;
+    --spread-y: -122px;
 
     width: 136px;
   }
 
   .download__object--perfume {
-    --spread-x: -98px;
+    --spread-x: -126px;
     --spread-y: -10px;
 
     width: 105px;
   }
 
   .download__object--bag {
-    --spread-x: -82px;
-    --spread-y: 104px;
+    --spread-x: -108px;
+    --spread-y: 108px;
 
     width: 112px;
   }
 
   .download__object--gift {
-    --spread-x: 98px;
+    --spread-x: 118px;
     --spread-y: 98px;
 
     width: 118px;
