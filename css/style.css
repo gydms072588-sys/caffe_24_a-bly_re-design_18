@@ -1607,32 +1607,6 @@ body.is-menu-open {
   margin-top: 16px;
 }
 
-.social-list {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-  display: flex;
-  gap: 14px;
-}
-
-.social-list a {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: var(--color-white);
-  color: var(--color-footer);
-  font-size: 12px;
-  font-weight: 900;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.social-list a:hover {
-  transform: translateY(-3px);
-  color: var(--color-pink);
-}
-
 /* Category Sub Page */
 .category-page {
   background: #fff;
@@ -2297,10 +2271,6 @@ body.is-menu-open {
     flex-direction: column;
   }
 
-  .social-list {
-    position: static;
-    margin-top: 28px;
-  }
 }
 
 @media (max-width: 640px) {
