@@ -3,36 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ABLY 스타일의 쇼핑 메인 페이지 리디자인">
+  <meta name="description" content="오늘의 취향을 빠르게 만나는 ABLY 쇼핑 메인">
   <title>ABLY | 오늘의 취향을 만나는 쇼핑</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main">본문 바로가기</a>
 
-  <header class="site-header" data-header>
-    <div class="site-header__inner">
+  <header class="site-header home-header" data-header>
+    <div class="site-header__inner home-header__inner">
       <a class="site-header__logo" href="index.html" aria-label="ABLY 홈">
         <img src="assets/images/logo/logo.png" alt="ABLY">
       </a>
 
       <nav class="site-header__nav" aria-label="주요 메뉴">
         <ul class="gnb">
-          <li class="gnb__item"><a class="gnb__link" href="index.html#hero">오늘의 발견</a></li>
+          <li class="gnb__item"><a class="gnb__link is-active" href="#hero" aria-current="page">오늘의 발견</a></li>
           <li class="gnb__item"><a class="gnb__link" href="category.html">카테고리</a></li>
-          <li class="gnb__item"><a class="gnb__link" href="index.html#style">브랜드</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="#style">브랜드</a></li>
           <li class="gnb__item"><a class="gnb__link" href="board-list.html">이벤트</a></li>
         </ul>
       </nav>
 
-      <div class="site-header__tools">
-        <form class="search-form" role="search" aria-label="상품 검색" data-search-form>
-          <label class="sr-only" for="site-search">검색어</label>
-          <input id="site-search" name="search" type="search" placeholder="취향 저격 드무드레스" autocomplete="off" data-search-input>
+      <div class="site-header__tools home-header__tools">
+        <form class="search-form home-header__search" role="search" aria-label="상품 검색" data-search-form>
+          <label class="sr-only" for="home-site-search">검색어</label>
+          <input id="home-site-search" name="search" type="search" placeholder="취향 저격 드무드레스" autocomplete="off" data-search-input>
           <button class="search-clear-button" type="button" aria-label="검색어 지우기" data-search-clear>
             <span class="material-symbols-outlined" aria-hidden="true">close</span>
           </button>
@@ -43,17 +44,16 @@
             <ul data-search-suggestion-list></ul>
           </div>
         </form>
-        <a class="header-icon-button site-header__icon" href="login.html" aria-label="로그인 및 마이페이지">
+        <a class="header-icon-button home-header__icon" href="login.html" aria-label="로그인 및 마이페이지">
           <span class="material-symbols-outlined" aria-hidden="true">person</span>
         </a>
-        <a class="header-icon-button site-header__icon" href="cart.html" aria-label="장바구니 및 구매 페이지">
+        <a class="header-icon-button home-header__icon" href="cart.html" aria-label="장바구니">
           <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
         </a>
         <div class="language-switcher site-header__icon">
-          <button class="header-icon-button" type="button" aria-label="언어 변경" aria-expanded="false" data-language-button>
+          <button class="header-icon-button home-header__icon" type="button" aria-label="언어 변경" aria-expanded="false" data-language-button>
             <span class="material-symbols-outlined" aria-hidden="true">globe</span>
           </button>
-
           <div class="language-menu" data-language-menu>
             <button type="button" data-lang="ko">한국어</button>
             <button type="button" data-lang="en">English</button>
@@ -61,7 +61,7 @@
             <button type="button" data-lang="zh">中文</button>
           </div>
         </div>
-        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+        <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="home-mobile-menu" data-menu-button>
           <span></span>
           <span></span>
           <span></span>
@@ -69,411 +69,399 @@
       </div>
     </div>
 
-    <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
-      <a href="index.html#hero">오늘의 발견</a>
+    <nav class="mobile-nav" id="home-mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
+      <a class="is-active" href="#hero" aria-current="page">오늘의 발견</a>
       <a href="category.html">카테고리</a>
-      <a href="index.html#style">브랜드</a>
+      <a href="#style">브랜드</a>
       <a href="board-list.html">이벤트</a>
 
       <div class="mobile-nav__actions" aria-label="모바일 사용자 메뉴">
-        <a class="mobile-nav__action" href="login.html" aria-label="로그인 및 마이페이지">
+        <a class="mobile-nav__action" href="login.html">
           <span class="material-symbols-outlined" aria-hidden="true">person</span>
           <span>마이페이지</span>
         </a>
-
-        <a class="mobile-nav__action" href="cart.html" aria-label="장바구니 및 구매 페이지">
+        <a class="mobile-nav__action" href="cart.html">
           <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
           <span>장바구니</span>
         </a>
-
-        <div class="mobile-language">
-          <p class="mobile-language__title">Language</p>
-          <div class="mobile-language__buttons">
-            <button type="button" data-lang="ko">KR</button>
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="ja">JP</button>
-            <button type="button" data-lang="zh">CN</button>
-          </div>
-        </div>
       </div>
     </nav>
   </header>
 
-  <main id="main">
-    <section class="hero" id="hero" aria-label="오늘의 추천 스타일">
+  <main id="main" class="home-main">
+    <section class="hero home-hero" id="hero" aria-label="주요 쇼핑 혜택">
       <div class="swiper hero__swiper" data-hero-swiper>
         <div class="swiper-wrapper">
-          <article class="swiper-slide hero__slide">
-            <div class="hero__content">
-              <p class="section-eyebrow">Daily Style, ABLY</p>
-              <h1 class="hero__title">오늘의 취향,<br><strong>에이블리</strong>에서</h1>
-              <p class="hero__desc">지금 가장 사랑받는 스타일을 만나보세요. <br> 에이블리로 떠나는 취향 탐험</p>
-              <a class="button button--primary" href="category.html">
-                <span>지금 쇼핑하기</span>
-                <span class="button__arrow" aria-hidden="true">→</span>
-              </a>
+          <article class="swiper-slide hero__slide home-hero__slide">
+            <div class="home-hero__content hero__content">
+              <p class="home-hero__eyebrow">DAILY STYLE, ABLY</p>
+              <h1>오늘의 취향<br><strong>에이블리</strong>에서</h1>
+              <p>지금 가장 사랑받는 스타일을 만나보세요.<br>에이블리로 떠나는 취향 탐험</p>
+              <a class="home-hero__cta" href="category.html">지금 쇼핑하기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
             </div>
-            <figure class="hero__visual">
-              <video src="assets/videos/hero_01.mp4" poster="assets/images/hero/hero_poster_01.jpg.png" autoplay muted loop playsinline></video>
-              <figcaption class="sr-only">분홍빛 쇼룸에서 휴대폰으로 쇼핑을 즐기는 모델</figcaption>
-            </figure>
+            <div class="home-hero__visual">
+              <img class="home-hero__image" src="assets/images/hero/hero_poster_01.jpg.png" alt="핑크 가디건을 입고 에이블리를 둘러보는 여성과 쇼핑백">
+            </div>
           </article>
 
-          <article class="swiper-slide hero__slide hero__slide--benefit">
-            <div class="hero__content">
-              <p class="section-eyebrow">Free Shipping</p>
-              <h2 class="hero__title">
-                배송비 걱정 없이,<br>
-                <strong>더 가볍게</strong>
-              </h2>
-              <p class="hero__desc">무료배송 혜택으로 오늘의 스타일을 부담 없이<br> 만나보세요.</p>
-              <a class="button button--primary" href="board-list.html">
-                <span>혜택 보러가기</span>
-                <span class="button__arrow" aria-hidden="true">→</span>
-              </a>
+          <article class="swiper-slide hero__slide home-hero__slide home-hero__slide--pink">
+            <div class="home-hero__content hero__content">
+              <p class="home-hero__eyebrow">ABLY PICK</p>
+              <h2>지금 인기 있는<br>에이블리 추천 아이템</h2>
+              <p>고민 없이 고를 수 있도록<br class="home-mobile-break"> 지금 사랑받는 스타일만 모았어요.</p>
+              <a class="home-hero__cta" href="#recommend">추천 상품 보기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
             </div>
-            <figure class="hero__visual">
-              <video src="assets/videos/hero_02.mp4" poster="assets/images/hero/hero_poster_02.png" autoplay muted loop playsinline></video>
-              <figcaption class="sr-only">에이블리 쇼핑백과 스타일 아이템</figcaption>
-            </figure>
+            <div class="home-hero__visual">
+              <img class="home-hero__image" src="assets/images/hero/hero_poster_02.png" alt="핑크 패키지와 함께 소개된 에이블리 추천 패션 아이템">
+            </div>
+          </article>
+
+          <article class="swiper-slide hero__slide home-hero__slide home-hero__slide--event">
+            <div class="home-hero__content hero__content">
+              <p class="home-hero__eyebrow">SEASON EVENT</p>
+              <h2>시즌 혜택과 함께<br>더 가볍게 쇼핑하기</h2>
+              <p>쿠폰부터 무료배송까지,<br class="home-mobile-break"> 놓치기 아쉬운 혜택을 확인하세요.</p>
+              <a class="home-hero__cta" href="board-list.html">혜택 확인하기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
+            </div>
+            <div class="home-hero__visual">
+              <img class="home-hero__image" src="assets/images/event/event_main_03.png" alt="핑크 컬러의 시즌 패션 아이템 기획전">
+            </div>
+          </article>
+
+          <article class="swiper-slide hero__slide home-hero__slide home-hero__slide--event home-hero__slide--benefit">
+            <div class="home-hero__content hero__content">
+              <p class="home-hero__eyebrow">NEW MEMBER</p>
+              <h2>처음 만나는 에이블리,<br>더 특별한 혜택으로</h2>
+              <p>신규 회원 쿠폰과 카테고리 혜택을<br class="home-mobile-break"> 지금 확인해보세요.</p>
+              <a class="home-hero__cta" href="signup.html">신규 혜택 보기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
+            </div>
+            <div class="home-hero__visual">
+              <img class="home-hero__image" src="assets/images/event/event_main_04.png" alt="핑크 캐릭터와 함께하는 신규 회원 혜택 배너">
+            </div>
           </article>
         </div>
-        <div class="hero__pagination swiper-pagination" aria-label="히어로 슬라이드 페이지"></div>
+
+        <button class="home-hero__arrow home-hero__arrow--prev" type="button" aria-label="이전 배너">
+          <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+        </button>
+        <button class="home-hero__arrow home-hero__arrow--next" type="button" aria-label="다음 배너">
+          <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+        </button>
+        <div class="hero__pagination home-hero__pagination swiper-pagination" aria-label="히어로 슬라이드 페이지"></div>
       </div>
     </section>
 
-    <section class="category section" id="category" aria-labelledby="category-title">
-      <div class="section__inner">
-        <div class="section-heading">
-          <p class="section-eyebrow">01. Category</p>
-          <h2 class="section-title" id="category-title">인기 카테고리<br>지금 많이 찾는 아이템</h2>
-          <p class="section-desc">에이블리에서 가장 인기있는 카테고리로 스타일링하세요.</p>
+    <section class="home-category" aria-labelledby="category-title">
+      <div class="home-container">
+        <div class="home-section-heading home-section-heading--center">
+          <p>QUICK CATEGORY</p>
+          <h2 id="category-title">바로 가는 카테고리</h2>
+        </div>
+        <nav class="home-category__scroller" aria-label="상품 카테고리 바로가기">
+          <a class="home-category__item" href="category.html?cate=clothing">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">checkroom</span></span>
+            <span>의류</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=men">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">man</span></span>
+            <span>남자패션</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=bigsize">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">accessibility_new</span></span>
+            <span>빅사이즈</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=shoes">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">footprint</span></span>
+            <span>신발</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=accessory">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">watch</span></span>
+            <span>패션소품</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=beauty">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">spa</span></span>
+            <span>뷰티</span>
+          </a>
+          <a class="home-category__item" href="category.html?cate=life">
+            <span class="home-category__thumb"><span class="material-symbols-outlined" aria-hidden="true">home</span></span>
+            <span>라이프</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="home-products" id="recommend" aria-labelledby="recommend-title">
+      <div class="home-container">
+        <div class="home-section-heading">
+          <p>RECOMMENDED FOR YOU</p>
+          <h2 id="recommend-title">회원님을 위한 추천 상품</h2>
+          <span>요즘 가장 반응 좋은 아이템을 모았어요.</span>
         </div>
 
-        <div class="category__actions">
-          <a class="category-more-link" href="category.html">
-            전체 카테고리 보기 <span aria-hidden="true">→</span>
+        <div class="home-product-grid">
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="소프트 리본 퍼프 블라우스 상세 보기"><img src="assets/images/category/product_01.jpg" alt="소프트 리본 퍼프 블라우스를 입은 모델"></a>
+              <span class="home-product-card__badge">BEST</span>
+              <div class="home-product-card__colors" aria-label="색상 4가지"><i class="is-pink"></i><i class="is-cream"></i><i class="is-black"></i><i class="is-blue"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>소프트 리본 퍼프 블라우스</h3></a>
+              <p>은은한 셔링과 리본 디테일로 완성한 데일리 블라우스</p>
+              <div class="home-product-card__price"><del>55,000원</del><strong><em>35%</em> 35,700원</strong></div>
+              <span class="home-product-card__review">★ 4.9 · 리뷰 136</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="소프트 리본 퍼프 블라우스 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="소프트 리본 퍼프 블라우스 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="라이트 케이블 반팔 니트 상세 보기"><img src="assets/images/category/product_02.jpg" alt="라이트 케이블 반팔 니트를 입은 모델"></a>
+              <span class="home-product-card__badge">NEW</span>
+              <div class="home-product-card__colors" aria-label="색상 3가지"><i class="is-cream"></i><i class="is-brown"></i><i class="is-black"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>라이트 케이블 반팔 니트</h3></a>
+              <p>여름까지 산뜻하게 입는 가벼운 케이블 짜임 니트</p>
+              <div class="home-product-card__price"><del>42,000원</del><strong><em>28%</em> 30,200원</strong></div>
+              <span class="home-product-card__review">★ 4.8 · 리뷰 98</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="라이트 케이블 반팔 니트 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="라이트 케이블 반팔 니트 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="데일리 슬림 스트라이프 셔츠 상세 보기"><img src="assets/images/category/product_03.jpg" alt="스트라이프 셔츠를 입은 모델"></a>
+              <span class="home-product-card__badge">NEW</span>
+              <div class="home-product-card__colors" aria-label="색상 3가지"><i class="is-blue"></i><i class="is-white"></i><i class="is-pink"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>데일리 슬림 스트라이프 셔츠</h3></a>
+              <p>단정한 실루엣에 경쾌한 컬러를 더한 데일리 셔츠</p>
+              <div class="home-product-card__price"><del>49,000원</del><strong><em>31%</em> 33,800원</strong></div>
+              <span class="home-product-card__review">★ 4.9 · 리뷰 201</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="데일리 슬림 스트라이프 셔츠 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="데일리 슬림 스트라이프 셔츠 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="클래식 크롭 트위드 재킷 상세 보기"><img src="assets/images/category/product_04.jpg" alt="클래식 크롭 트위드 재킷을 입은 모델"></a>
+              <span class="home-product-card__badge">MD PICK</span>
+              <div class="home-product-card__colors" aria-label="색상 2가지"><i class="is-cream"></i><i class="is-black"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>클래식 크롭 트위드 재킷</h3></a>
+              <p>가볍게 걸치기 좋은 정돈된 실루엣의 트위드 재킷</p>
+              <div class="home-product-card__price"><del>79,000원</del><strong><em>24%</em> 59,900원</strong></div>
+              <span class="home-product-card__review">★ 4.7 · 리뷰 82</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="클래식 크롭 트위드 재킷 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="클래식 크롭 트위드 재킷 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="프릴 포인트 코튼 블라우스 상세 보기"><img src="assets/images/category/product_05.jpg" alt="프릴 포인트 코튼 블라우스를 입은 모델"></a>
+              <span class="home-product-card__badge">BEST</span>
+              <div class="home-product-card__colors" aria-label="색상 3가지"><i class="is-white"></i><i class="is-pink"></i><i class="is-blue"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>프릴 포인트 코튼 블라우스</h3></a>
+              <p>사랑스러운 프릴과 산뜻한 코튼 소재가 만난 블라우스</p>
+              <div class="home-product-card__price"><del>46,000원</del><strong><em>30%</em> 32,200원</strong></div>
+              <span class="home-product-card__review">★ 4.9 · 리뷰 164</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="프릴 포인트 코튼 블라우스 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="프릴 포인트 코튼 블라우스 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="이지 라운드 썸머 가디건 상세 보기"><img src="assets/images/category/product_06.jpg" alt="이지 라운드 썸머 가디건을 입은 모델"></a>
+              <span class="home-product-card__badge">NEW</span>
+              <div class="home-product-card__colors" aria-label="색상 4가지"><i class="is-cream"></i><i class="is-pink"></i><i class="is-brown"></i><i class="is-black"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>이지 라운드 썸머 가디건</h3></a>
+              <p>일교차가 큰 날 가볍게 챙기는 부드러운 여름 가디건</p>
+              <div class="home-product-card__price"><del>39,000원</del><strong><em>20%</em> 31,200원</strong></div>
+              <span class="home-product-card__review">★ 4.8 · 리뷰 115</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="이지 라운드 썸머 가디건 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="이지 라운드 썸머 가디건 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="모던 핀턱 와이드 슬랙스 상세 보기"><img src="assets/images/category/product_07.jpg" alt="모던 핀턱 와이드 슬랙스를 입은 모델"></a>
+              <span class="home-product-card__badge">MD PICK</span>
+              <div class="home-product-card__colors" aria-label="색상 3가지"><i class="is-brown"></i><i class="is-black"></i><i class="is-cream"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>모던 핀턱 와이드 슬랙스</h3></a>
+              <p>자연스럽게 떨어지는 핏과 편안한 착용감의 와이드 팬츠</p>
+              <div class="home-product-card__price"><del>58,000원</del><strong><em>26%</em> 42,900원</strong></div>
+              <span class="home-product-card__review">★ 4.9 · 리뷰 176</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="모던 핀턱 와이드 슬랙스 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="모던 핀턱 와이드 슬랙스 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="home-product-card">
+            <div class="home-product-card__media">
+              <a href="product-detail.html" aria-label="베이직 유넥 소프트 티셔츠 상세 보기"><img src="assets/images/category/product_08.jpg" alt="베이직 유넥 소프트 티셔츠를 입은 모델"></a>
+              <span class="home-product-card__badge">1+1</span>
+              <div class="home-product-card__colors" aria-label="색상 4가지"><i class="is-white"></i><i class="is-pink"></i><i class="is-blue"></i><i class="is-black"></i></div>
+            </div>
+            <div class="home-product-card__body">
+              <a href="product-detail.html"><h3>베이직 유넥 소프트 티셔츠</h3></a>
+              <p>단독으로도 레이어드로도 활용하기 좋은 소프트 티셔츠</p>
+              <div class="home-product-card__price"><del>29,000원</del><strong><em>34%</em> 19,000원</strong></div>
+              <span class="home-product-card__review">★ 4.8 · 리뷰 243</span>
+              <div class="home-product-card__actions">
+                <button type="button" aria-label="베이직 유넥 소프트 티셔츠 찜하기" aria-pressed="false" data-wishlist><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+                <a href="cart.html" aria-label="베이직 유넥 소프트 티셔츠 장바구니에 담기"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <a class="home-more-button" href="category.html">MORE <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
+      </div>
+    </section>
+
+    <section class="home-promotion" aria-labelledby="promotion-title">
+      <div class="home-container">
+        <div class="home-section-heading home-section-heading--center">
+          <p>EVENT &amp; BENEFIT</p>
+          <h2 id="promotion-title">지금 만날 수 있는 쇼핑 혜택</h2>
+          <span>짧고 확실한 오늘의 혜택을 확인해보세요.</span>
+        </div>
+        <div class="home-promotion__grid">
+          <a class="home-promotion__card" href="board-list.html">
+            <img src="assets/images/event/event_main_02.png" alt="무료배송 기획전 배너">
+            <span class="home-promotion__shade" aria-hidden="true"></span>
+            <span class="home-promotion__copy"><small>FREE SHIPPING</small><strong>오늘만 열리는<br>무료배송 기획전</strong><em>혜택 보기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></em></span>
+          </a>
+          <a class="home-promotion__card" href="signup.html">
+            <img src="assets/images/event/event_main_03.png" alt="신규 회원 쿠폰 배너">
+            <span class="home-promotion__shade" aria-hidden="true"></span>
+            <span class="home-promotion__copy"><small>WELCOME COUPON</small><strong>처음이라 더 좋은<br>신규 회원 쿠폰</strong><em>쿠폰 확인 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></em></span>
+          </a>
+          <a class="home-promotion__card" href="category.html">
+            <img src="assets/images/event/event_main_04.png" alt="시즌 스타일 추천 배너">
+            <span class="home-promotion__shade" aria-hidden="true"></span>
+            <span class="home-promotion__copy"><small>SEASON PICK</small><strong>지금 입기 좋은<br>시즌 스타일 추천</strong><em>스타일 보기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></em></span>
           </a>
         </div>
-
-        <div class="category__grid">
-          <article class="category-card category-card--featured reveal-card">
-            <a class="category-card__link" href="category.html">
-              <figure class="category-card__media">
-                <img src="assets/images/category/category_fashion.png" alt="여성의류 대표 스타일">
-              </figure>
-              <div class="category-card__body">
-                <span class="badge">BEST</span>
-                <h3 class="category-card__title">여성의류</h3>
-                <p class="category-card__desc">데일리룩부터 트렌디한 무드까지</p>
-                <span class="category-card__cta">자세히 보기 <span aria-hidden="true">→</span></span>
-              </div>
-            </a>
-          </article>
-
-          <article class="category-card category-card--shoes reveal-card">
-            <a class="category-card__link" href="category.html">
-              <figure class="category-card__media"><img src="assets/images/category/category_shoes.png" alt="여성 샌들과 슈즈"></figure>
-              <div class="category-card__body">
-                <h3 class="category-card__title">신발</h3>
-                <span class="category-card__cta">자세히 보기 <span aria-hidden="true">→</span></span>
-              </div>
-            </a>
-          </article>
-
-          <article class="category-card category-card--bag reveal-card">
-            <a class="category-card__link" href="category.html">
-              <figure class="category-card__media"><img src="assets/images/category/category_bag.png" alt="미니 숄더백"></figure>
-              <div class="category-card__body">
-                <h3 class="category-card__title">가방</h3>
-                <span class="category-card__cta">자세히 보기 <span aria-hidden="true">→</span></span>
-              </div>
-            </a>
-          </article>
-
-          <article class="category-card category-card--beauty reveal-card">
-            <a class="category-card__link" href="category.html">
-              <figure class="category-card__media"><img src="assets/images/category/category_beauty.png" alt="분홍색 립스틱과 뷰티 제품"></figure>
-              <div class="category-card__body">
-                <h3 class="category-card__title">뷰티</h3>
-                <span class="category-card__cta">자세히 보기 <span aria-hidden="true">→</span></span>
-              </div>
-            </a>
-          </article>
-
-          <article class="category-card category-card--life reveal-card">
-            <a class="category-card__link" href="category.html">
-              <figure class="category-card__media"><img src="assets/images/category/category_life.png" alt="향초와 라이프스타일 소품"></figure>
-              <div class="category-card__body">
-                <h3 class="category-card__title">라이프</h3>
-                <span class="category-card__cta">자세히 보기 <span aria-hidden="true">→</span></span>
-              </div>
-            </a>
-          </article>
-        </div>
       </div>
     </section>
 
-    <section class="trend section section--dark" id="style" aria-labelledby="trend-title">
-      <div class="section__inner trend__inner">
-        <div class="trend__content">
-          <div class="section-heading section-heading--dark">
-            <p class="section-eyebrow">02. Trend Category</p>
-            <h2 class="section-title" id="trend-title">지금, 에이블리에서<br><strong>사랑받는 스타일</strong></h2>
-            <p class="section-desc">에디터가 추천하는 트렌드 룩을 확인해보세요.</p>
+    <section class="home-reviews" aria-labelledby="review-title">
+      <div class="home-container">
+        <div class="home-section-heading home-section-heading--review">
+          <div>
+            <p>REAL REVIEW</p>
+            <h2 id="review-title">PHOTO REVIEW</h2>
+            <span>먼저 경험한 고객들의 생생한 후기를 확인해보세요.</span>
           </div>
-
-          <div class="trend__grid" role="list" aria-label="트렌드 아이템">
-            <button class="trend-item is-active" type="button" role="listitem" data-trend-index="0" aria-pressed="true">
-              <img src="assets/images/trend/trend_item_01.png" alt="러블리 블라우스">
-              <span>러블리</span>
-            </button>
-            <button class="trend-item" type="button" role="listitem" data-trend-index="1" aria-pressed="false">
-              <img src="assets/images/trend/trend_item_02.png" alt="로맨틱 리본 니트">
-              <span>로맨틱</span>
-            </button>
-            <button class="trend-item" type="button" role="listitem" data-trend-index="2" aria-pressed="false">
-              <img src="assets/images/trend/trend_item_03.png" alt="화이트 아우터">
-              <span>아우터</span>
-            </button>
-            <button class="trend-item" type="button" role="listitem" data-trend-index="3" aria-pressed="false">
-              <img src="assets/images/trend/trend_item_04.png" alt="캐주얼 셔츠">
-              <span>셔츠룩</span>
-            </button>
-            <button class="trend-item" type="button" role="listitem" data-trend-index="4" aria-pressed="false">
-              <img src="assets/images/trend/trend_item_05.png" alt="클래식 재킷">
-              <span>출근룩</span>
-            </button>
-            <button class="trend-item" type="button" role="listitem" data-trend-index="5" aria-pressed="false">
-              <img src="assets/images/trend/trend_item_06.png" alt="베이지 팬츠">
-              <span>BEST</span>
-            </button>
+          <div class="home-review__nav" aria-label="리뷰 슬라이드 이동">
+            <button class="home-review-prev" type="button" aria-label="이전 리뷰"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
+            <button class="home-review-next" type="button" aria-label="다음 리뷰"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
           </div>
-
-          <a class="button button--outline" href="category.html">
-            <span>자세히 보기</span>
-            <span class="button__arrow" aria-hidden="true">→</span>
-          </a>
         </div>
 
-        <div class="trend__showcase">
-          <div class="swiper trend-swiper" data-trend-swiper>
-            <div class="swiper-wrapper">
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">NEW</span>
-                <img src="assets/images/trend/trend_main_01.png" alt="블라우스와 와이드 팬츠 스타일">
-                <div class="trend-card__caption">
-                  <h3>러블리 뉴시즌 룩</h3>
-                  <p>가볍고 산뜻한 핑크 무드 스타일링</p>
-                </div>
-                </a>
-              </article>
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">NEW</span>
-                <img src="assets/images/trend/trend_main_02.png" alt="리본 포인트 상의 스타일">
-                <div class="trend-card__caption">
-                  <h3>로맨틱 리본 포인트</h3>
-                  <p>데이트룩에 잘 어울리는 부드러운 실루엣</p>
-                </div>
-                </a>
-              </article>
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">NEW</span>
-                <img src="assets/images/trend/trend_main_03.png" alt="화이트 아우터 스타일">
-                <div class="trend-card__caption">
-                  <h3>맑은 톤 아우터</h3>
-                  <p>계절을 가볍게 여는 화이트 레이어드</p>
-                </div>
-                </a>
-              </article>
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">NEW</span>
-                <img src="assets/images/trend/trend_main_04.png" alt="셔츠와 스커트 스타일">
-                <div class="trend-card__caption">
-                  <h3>셔츠로 완성하는 하루</h3>
-                  <p>매일 입기 좋은 담백한 데일리룩</p>
-                </div>
-                </a>
-              </article>
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">NEW</span>
-                <img src="assets/images/trend/trend_main_05.png" alt="재킷과 팬츠 스타일">
-                <div class="trend-card__caption">
-                  <h3>출근길 클래식</h3>
-                  <p>편안하지만 단정한 오피스 스타일</p>
-                </div>
-                </a>
-              </article>
-              <article class="swiper-slide trend-card">
-                <a class="trend-card__link" href="product-detail.html">
-                <span class="badge trend-card__badge">BEST</span>
-                <img src="assets/images/trend/trend_main_06.png" alt="베이지 톤 팬츠 스타일">
-                <div class="trend-card__caption">
-                  <h3>베이지 베스트 룩</h3>
-                  <p>부드러운 컬러로 오래 입는 베스트 조합</p>
-                </div>
-                </a>
-              </article>
-            </div>
-          </div>
-          <div class="trend__controls" aria-label="스타일 슬라이드 조작">
-            <button class="round-button trend-button-prev" type="button" aria-label="이전 스타일">
-              <span class="material-symbols-outlined" aria-hidden="true">arrow_back_ios_new</span>
-            </button>
-            <button class="round-button trend-button-next" type="button" aria-label="다음 스타일">
-              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
-            </button>
-          </div>
-          <div class="trend__progress" aria-hidden="true"><span data-trend-progress></span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="event section" id="event" aria-labelledby="event-title">
-      <div class="section__inner">
-        <div class="section-heading">
-          <p class="section-eyebrow">03. Shopping Benefits</p>
-          <h2 class="section-title" id="event-title">오늘의 혜택을<br><strong>가장 먼저 만나보세요</strong></h2>
-          <p class="section-desc">놓치기 아쉬운 에이블리 인기 상품을 한눈에 확인하세요.</p>
-        </div>
-
-        <div class="event__layout">
-          <figure class="event__main" data-event-main>
-            <img src="assets/images/event/Mask%20group.png" alt="쇼츠 티셔츠 이벤트 대표 이미지" data-event-image>
-            <figcaption>
-              <span data-event-label>쇼츠</span>
-              <strong data-event-title>쇼츠 티셔츠 페스타</strong>
-            </figcaption>
-          </figure>
-
-          <div class="event-list" role="list" aria-label="이벤트 목록">
-            <article class="event-item is-active" role="listitem" tabindex="0" data-event-image="assets/images/event/Mask%20group.png" data-event-label="쇼츠" data-event-title="쇼츠 티셔츠 페스타" aria-pressed="true" data-event-link="board-view.html">
-              <img src="assets/images/event/event_thumb_01.png" alt="쇼츠 티셔츠 썸네일">
-              <span class="event-item__meta">
-                <span class="event-status event-status--ongoing">진행중</span>
-                <strong>쇼츠 티셔츠 페스타</strong>
-                <small>2026-06-09 ~ 2026-06-18</small>
-              </span>
-              <a class="event-item__arrow" href="board-view.html" aria-label="쇼츠 티셔츠 페스타 페이지로 이동">
-                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
+        <div class="swiper home-review-swiper" data-review-swiper>
+          <div class="swiper-wrapper">
+            <article class="swiper-slide home-review-card">
+              <a href="product-detail.html">
+                <img src="assets/images/trend/trend_main_01.png" alt="핑크 블라우스 구매 고객 코디">
+                <span class="home-review-card__body"><strong>디자인이 정말 예뻐요!</strong><span class="home-review-card__stars" aria-label="별점 5점">★★★★★</span><p>사진보다 컬러가 더 화사하고 핏도 자연스러워서 자주 입고 있어요.</p></span>
               </a>
             </article>
-
-            <article class="event-item" role="listitem" tabindex="0" data-event-image="assets/images/event/event_main_02.png" data-event-label="이벤트" data-event-title="케이스부터 버블머스크" aria-pressed="false" data-event-link="board-list.html">
-              <img src="assets/images/event/event_thumb_02.png" alt="뷰티 이벤트 썸네일">
-              <span class="event-item__meta">
-                <span class="event-status event-status--ongoing">진행중</span>
-                <strong>케이스부터 버블머스크</strong>
-                <small>2026-06-09 ~ 2026-06-18</small>
-              </span>
-              <a class="event-item__arrow" href="board-list.html" aria-label="케이스부터 버블머스크 페이지로 이동">
-                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
+            <article class="swiper-slide home-review-card">
+              <a href="product-detail.html">
+                <img src="assets/images/trend/trend_main_02.png" alt="크림 가디건 구매 고객 코디">
+                <span class="home-review-card__body"><strong>부드럽고 핏이 좋아요</strong><span class="home-review-card__stars" aria-label="별점 5점">★★★★★</span><p>가볍고 촉감이 좋아서 일교차 큰 날 매일 챙겨 입기 좋습니다.</p></span>
               </a>
             </article>
-
-            <article class="event-item" role="listitem" tabindex="0" data-event-image="assets/images/event/event_main_03.png" data-event-label="공지" data-event-title="런데이즈 에셋전" aria-pressed="false" data-event-link="board-list.html">
-              <img src="assets/images/event/event_thumb_03.png" alt="에이블리 앱 아이콘 썸네일">
-              <span class="event-item__meta">
-                <span class="event-status event-status--notice">공지</span>
-                <strong>런데이즈 에셋전</strong>
-                <small>2026-06-09 ~ 2026-06-18</small>
-              </span>
-              <a class="event-item__arrow" href="board-list.html" aria-label="런데이즈 에셋전 페이지로 이동">
-                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
+            <article class="swiper-slide home-review-card">
+              <a href="product-detail.html">
+                <img src="assets/images/trend/trend_main_03.png" alt="화이트 아우터 구매 고객 코디">
+                <span class="home-review-card__body"><strong>코디하기 편해요</strong><span class="home-review-card__stars" aria-label="별점 4점">★★★★☆</span><p>어떤 하의에도 잘 어울리고 실제로 보면 소재가 더 고급스러워요.</p></span>
               </a>
             </article>
-
-            <article class="event-item" role="listitem" tabindex="0" data-event-image="assets/images/event/event_main_04.png" data-event-label="단독" data-event-title="브랜드 상반기 결산" aria-pressed="false" data-event-link="board-list.html">
-              <img src="assets/images/event/event_thumb_04.png" alt="브랜드 결산 썸네일">
-              <span class="event-item__meta">
-                <span class="event-status event-status--ended">종료</span>
-                <strong>브랜드 상반기 결산</strong>
-                <small>2026-06-09 ~ 2026-06-18</small>
-              </span>
-              <a class="event-item__arrow" href="board-list.html" aria-label="브랜드 상반기 결산 페이지로 이동">
-                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
+            <article class="swiper-slide home-review-card">
+              <a href="product-detail.html">
+                <img src="assets/images/trend/trend_main_04.png" alt="캐주얼 셔츠 구매 고객 코디">
+                <span class="home-review-card__body"><strong>데일리 셔츠로 추천</strong><span class="home-review-card__stars" aria-label="별점 5점">★★★★★</span><p>적당히 여유 있는 핏이라 편하고 출근룩으로도 잘 입고 있어요.</p></span>
+              </a>
+            </article>
+            <article class="swiper-slide home-review-card">
+              <a href="product-detail.html">
+                <img src="assets/images/trend/trend_main_05.png" alt="클래식 재킷 구매 고객 코디">
+                <span class="home-review-card__body"><strong>사진 그대로 깔끔해요</strong><span class="home-review-card__stars" aria-label="별점 5점">★★★★★</span><p>단정하지만 답답하지 않고 중요한 날 입기 좋은 재킷이에요.</p></span>
               </a>
             </article>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="download section" id="download" aria-labelledby="download-title">
-      <div class="section__inner download__inner">
-        <div class="download__content">
-          <div class="section-heading">
-            <p class="section-eyebrow">04. Shopping Benefits</p>
-            <h2 class="section-title" id="download-title">앱에서 더 빠르게<br><strong>나만의 쇼핑을 시작하세요</strong></h2>
-            <p class="section-desc">관심 상품 알림부터 무료배송 혜택까지, 에이블리 앱에서 더 편리하게 확인해보세요.</p>
-          </div>
-
-          <figure class="download__qr">
-            <img src="assets/images/app/QR.svg" alt="에이블리 앱 다운로드 QR 코드">
-          </figure>
-
-          <div class="download__buttons" aria-label="앱 다운로드 링크">
-            <a class="store-button" href="#" aria-label="App Store에서 에이블리 다운로드">
-              <img src="assets/images/app/App%20Store%20logo.png" alt="">
-              <span>App Store 다운로드</span>
-              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
-            </a>
-            <a class="store-button" href="#" aria-label="Google Play에서 에이블리 다운로드">
-              <img src="assets/images/app/Google%20Play%20logo.png" alt="">
-              <span>Google Play 다운로드</span>
-              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
-            </a>
-          </div>
-        </div>
-
-        <figure class="download__visual" aria-label="에이블리 앱 다운로드 비주얼">
-          <img class="download__heart-bg" src="assets/images/app/app_bg_object_0.png" alt="">
-          <img class="download__object download__object--perfume" src="assets/images/app/app_bg_object_01.png" alt="">
-          <img class="download__object download__object--bag" src="assets/images/app/app_bg_object_02.png" alt="">
-          <img class="download__object download__object--shirt" src="assets/images/app/app_bg_object_03.png" alt="">
-          <img class="download__object download__object--gift" src="assets/images/app/app_bg_object_04.png" alt="">
-          <span class="download__phone" role="img" aria-label="에이블리 앱 핸드폰 목업">
-            <img class="download__phone-img" src="assets/images/app/iphone_15.png" alt="">
-          </span>
-          <span class="download__hover-hint" aria-hidden="true">마우스를 올려보세요</span>
-        </figure>
+        <div class="home-review__progress" aria-hidden="true"><span data-review-progress></span></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div class="site-footer__top">
-        <a class="site-footer__logo" href="index.html" aria-label="ABLY 홈">ABLY</a>
-        <nav class="site-footer__nav" aria-label="푸터 메뉴">
-          <a href="#">회사소개</a>
-          <a href="#">이용약관</a>
-          <a href="#">개인정보처리방침</a>
-          <a href="#">위치기반서비스 이용약관</a>
-          <a href="#">제휴문의</a>
-          <a href="#">채용안내</a>
-        </nav>
+  <footer class="site-footer home-footer">
+    <div class="home-container home-footer__inner">
+      <div class="home-footer__brand">
+        <a href="index.html" aria-label="ABLY 홈">ABLY</a>
+        <p>누구나 나만의 스타일을 찾을 수 있는 쇼핑</p>
       </div>
 
-      <div class="site-footer__bottom">
-        <address>
-          에이블리코퍼레이션(주) 대표 강석훈 | 사업자등록번호 220-88-01012 | 통신판매업신고 2020-서울강남-02369<br>
-          서울특별시 강남구 테헤란로 142, 9층 | 고객센터 1577-9383 (평일 09:00 - 18:00)
-        </address>
+      <div class="home-footer__groups">
+        <details class="home-footer__group" open>
+          <summary>고객센터 <span class="material-symbols-outlined" aria-hidden="true">add</span></summary>
+          <div><strong>1588-0000</strong><p>평일 10:00 - 17:00<br>점심 12:00 - 13:00</p><a href="board-list.html">1:1 문의하기</a></div>
+        </details>
+        <details class="home-footer__group" open>
+          <summary>쇼핑 안내 <span class="material-symbols-outlined" aria-hidden="true">add</span></summary>
+          <div><a href="#">배송 안내</a><a href="#">교환 · 반품 안내</a><a href="board-list.html">자주 묻는 질문</a><a href="cart.html">주문 조회</a></div>
+        </details>
+        <details class="home-footer__group" open>
+          <summary>ABLY <span class="material-symbols-outlined" aria-hidden="true">add</span></summary>
+          <div><a href="#">회사 소개</a><a href="#">이용약관</a><a href="#"><b>개인정보처리방침</b></a><a href="#">입점 안내</a></div>
+        </details>
+        <details class="home-footer__group" open>
+          <summary>FOLLOW <span class="material-symbols-outlined" aria-hidden="true">add</span></summary>
+          <div><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">앱 다운로드</a></div>
+        </details>
+      </div>
+
+      <div class="home-footer__company">
+        <address>에이블리코퍼레이션(주) · 대표 강석훈 · 사업자등록번호 220-88-01012 · 통신판매업신고 2020-서울강남-02369<br>서울특별시 강남구 테헤란로 142, 9층 · 이메일 support@a-bly.com</address>
         <small>© ABLY Corp. All rights reserved.</small>
       </div>
-
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
