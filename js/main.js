@@ -2,6 +2,7 @@ const SELECTORS = {
   menuButton: "[data-menu-button]",
   mobileMenu: "[data-mobile-menu]",
   heroSwiper: "[data-hero-swiper]",
+  benefitSwiper: "[data-benefit-swiper]",
   trendSwiper: "[data-trend-swiper]",
   trendItem: ".trend-item",
   trendProgress: "[data-trend-progress]",
@@ -227,6 +228,166 @@ const translations = {
   }
 };
 
+function ensureSharedNavigation() {
+  const header = document.querySelector(".site-header[data-header]");
+
+  if (!header || header.classList.contains("home-header")) return;
+
+  document.body.classList.add("home-page");
+  header.classList.add("home-header");
+  header.innerHTML = `
+    <div class="site-header__inner home-header__inner">
+      <button class="menu-button" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+
+      <a class="site-header__logo" href="index.html" aria-label="ABLY 홈">
+        <img src="assets/images/logo/logo.png" alt="ABLY">
+      </a>
+
+      <nav class="site-header__nav" aria-label="주요 메뉴">
+        <ul class="gnb">
+          <li class="gnb__item"><a class="gnb__link" href="category.html?cate=brand">브랜드</a></li>
+          <li class="gnb__item gnb__item--dropdown">
+            <a class="gnb__link" href="category.html" aria-haspopup="true">모든상품</a>
+            <ul class="gnb-dropdown" aria-label="모든상품 하위 메뉴">
+              <li><a href="category.html?cate=fashion">패션</a></li>
+              <li><a href="category.html?cate=shoes">신발</a></li>
+              <li><a href="category.html?cate=beauty">뷰티</a></li>
+              <li><a href="category.html?cate=life">라이프</a></li>
+            </ul>
+          </li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#promotion">타임특가</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="index.html#reviews">리뷰</a></li>
+          <li class="gnb__item gnb__item--dropdown">
+            <a class="gnb__link" href="board-list.html" aria-haspopup="true">커뮤니티</a>
+            <ul class="gnb-dropdown" aria-label="커뮤니티 하위 메뉴">
+              <li><a href="board-list.html?board=notice">공지사항</a></li>
+              <li><a href="board-list.html?board=qa">상품QA</a></li>
+              <li><a href="board-list.html?board=event">이벤트</a></li>
+              <li><a href="board-list.html?board=faq">자주묻는질문</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__tools home-header__tools">
+        <form class="search-form home-header__search" role="search" aria-label="상품 검색" data-search-form>
+          <label class="sr-only" for="site-search">검색어</label>
+          <input id="site-search" name="search" type="search" placeholder="취향 저격 드무드레스" autocomplete="off" data-search-input>
+          <button class="search-clear-button" type="button" aria-label="검색어 지우기" data-search-clear>
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          </button>
+          <button class="icon-button" type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+          </button>
+          <div class="search-panel" data-search-panel><ul data-search-suggestion-list></ul></div>
+        </form>
+
+        <div class="account-menu" data-account-menu>
+          <button class="header-icon-button home-header__icon" type="button" aria-label="로그인 및 마이페이지 메뉴" aria-expanded="false" aria-controls="account-dropdown" data-account-button>
+            <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          </button>
+          <div class="account-menu__dropdown" id="account-dropdown" data-account-dropdown>
+            <a class="account-menu__login" href="login.html">로그인</a>
+            <a href="cart.html">주문배송조회</a>
+            <a href="#wishlist">관심상품</a>
+            <a href="login.html">마이페이지</a>
+          </div>
+        </div>
+
+        <a class="header-icon-button home-header__icon" href="cart.html" aria-label="장바구니">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+        </a>
+
+        <div class="language-switcher site-header__icon">
+          <button class="header-icon-button home-header__icon" type="button" aria-label="언어 변경" aria-expanded="false" data-language-button>
+            <span class="material-symbols-outlined" aria-hidden="true">globe</span>
+          </button>
+          <div class="language-menu" data-language-menu>
+            <button type="button" data-lang="ko">한국어</button>
+            <button type="button" data-lang="en">English</button>
+            <button type="button" data-lang="ja">日本語</button>
+            <button type="button" data-lang="zh">中文</button>
+          </div>
+        </div>
+
+        <button class="header-icon-button home-header__icon mobile-search-button" type="button" aria-label="검색 열기" aria-expanded="false" aria-controls="mobile-search-layer" data-mobile-search-open>
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        </button>
+      </div>
+    </div>`;
+
+  header.insertAdjacentHTML("afterend", `
+    <nav class="mobile-nav" id="mobile-menu" aria-label="모바일 주요 메뉴" data-mobile-menu>
+      <div class="mobile-nav__account">
+        <strong>로그인 해주세요</strong>
+        <p>회원 가입하고 다양한 혜택 받으세요</p>
+        <div class="mobile-nav__account-actions">
+          <a href="login.html">로그인</a>
+          <a href="signup.html">회원가입</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav__primary">
+        <a href="category.html?cate=brand">브랜드</a>
+        <div class="mobile-nav__group">
+          <button class="mobile-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-products-submenu" data-mobile-submenu-toggle>
+            <span>모든상품</span><span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </button>
+          <div class="mobile-nav__submenu" id="mobile-products-submenu" hidden>
+            <a href="category.html?cate=fashion">패션</a><a href="category.html?cate=shoes">신발</a><a href="category.html?cate=beauty">뷰티</a><a href="category.html?cate=life">라이프</a>
+          </div>
+        </div>
+        <a href="index.html#promotion">타임특가</a>
+        <a href="index.html#reviews">리뷰</a>
+        <div class="mobile-nav__group">
+          <button class="mobile-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-community-submenu" data-mobile-submenu-toggle>
+            <span>커뮤니티</span><span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </button>
+          <div class="mobile-nav__submenu" id="mobile-community-submenu" hidden>
+            <a href="board-list.html?board=notice">공지사항</a><a href="board-list.html?board=qa">상품QA</a><a href="board-list.html?board=event">이벤트</a><a href="board-list.html?board=faq">자주묻는질문</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-nav__utility" aria-label="모바일 사용자 메뉴">
+        <a href="login.html"><span class="material-symbols-outlined" aria-hidden="true">person</span><span>마이페이지</span></a>
+        <details class="mobile-nav__language">
+          <summary><span class="material-symbols-outlined" aria-hidden="true">globe</span><span>언어변경</span></summary>
+          <div><button type="button" data-lang="ko">한국어</button><button type="button" data-lang="en">English</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="zh">中文</button></div>
+        </details>
+        <a href="board-list.html?board=faq"><span class="material-symbols-outlined" aria-hidden="true">support_agent</span><span>고객센터</span></a>
+      </div>
+    </nav>
+    <button class="mobile-nav-dim" type="button" aria-label="모바일 메뉴 닫기" data-mobile-nav-dim></button>
+
+    <section class="mobile-search-layer" id="mobile-search-layer" aria-label="모바일 상품 검색" aria-hidden="true" data-mobile-search-layer>
+      <div class="mobile-search-layer__panel">
+        <div class="mobile-search-layer__header">
+          <h2>검색</h2>
+          <button type="button" aria-label="검색 닫기" data-mobile-search-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+        </div>
+        <form class="mobile-search-layer__form" action="category.html" role="search">
+          <label class="sr-only" for="mobile-search-input">검색어</label>
+          <input id="mobile-search-input" name="search" type="search" placeholder="검색어를 입력해주세요." autocomplete="off" data-mobile-search-input>
+          <button type="submit" aria-label="검색 실행"><span class="material-symbols-outlined" aria-hidden="true">search</span></button>
+        </form>
+        <div class="mobile-search-layer__section">
+          <h3>인기 검색어</h3>
+          <ol class="mobile-search-layer__keywords">
+            <li><a href="category.html?search=원피스"><span>1</span>원피스</a></li><li><a href="category.html?search=가디건"><span>2</span>가디건</a></li>
+            <li><a href="category.html?search=데님팬츠"><span>3</span>데님팬츠</a></li><li><a href="category.html?search=스니커즈"><span>4</span>스니커즈</a></li>
+            <li><a href="category.html?search=블라우스"><span>5</span>블라우스</a></li><li><a href="category.html?search=니트"><span>6</span>니트</a></li>
+            <li><a href="category.html?search=토트백"><span>7</span>토트백</a></li><li><a href="category.html?search=립틴트"><span>8</span>립틴트</a></li>
+            <li><a href="category.html?search=미니백"><span>9</span>미니백</a></li><li><a href="category.html?search=스커트"><span>10</span>스커트</a></li>
+          </ol>
+        </div>
+        <div class="mobile-search-layer__section mobile-search-layer__recent"><h3>최근 검색어</h3><p>최근 검색어가 없습니다.</p></div>
+      </div>
+    </section>`);
+}
+
 function getStoredLanguage() {
   return localStorage.getItem("ably-language") || "ko";
 }
@@ -409,9 +570,38 @@ function initHeaderSearch() {
   updateValueState();
 }
 
+function initAccountMenu() {
+  const container = document.querySelector("[data-account-menu]");
+  const button = document.querySelector("[data-account-button]");
+  const dropdown = document.querySelector("[data-account-dropdown]");
+
+  if (!container || !button || !dropdown) return;
+
+  const closeAccountMenu = () => {
+    button.setAttribute("aria-expanded", "false");
+    dropdown.classList.remove("is-open");
+  };
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!isOpen));
+    dropdown.classList.toggle("is-open", !isOpen);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!container.contains(event.target)) closeAccountMenu();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeAccountMenu();
+  });
+}
+
 function initMobileMenu() {
   const button = document.querySelector(SELECTORS.menuButton);
   const menu = document.querySelector(SELECTORS.mobileMenu);
+  const dim = document.querySelector("[data-mobile-nav-dim]");
 
   if (!button || !menu) return;
 
@@ -422,8 +612,37 @@ function initMobileMenu() {
     document.body.classList.remove("is-menu-open");
   };
 
+  const submenuToggles = Array.from(menu.querySelectorAll("[data-mobile-submenu-toggle]"));
+
+  submenuToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      const submenu = document.getElementById(toggle.getAttribute("aria-controls"));
+
+      submenuToggles.forEach((otherToggle) => {
+        if (otherToggle === toggle) return;
+        otherToggle.setAttribute("aria-expanded", "false");
+        const otherSubmenu = document.getElementById(otherToggle.getAttribute("aria-controls"));
+        if (otherSubmenu) otherSubmenu.hidden = true;
+      });
+
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      if (submenu) submenu.hidden = isOpen;
+    });
+  });
+
   button.addEventListener("click", () => {
     const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    if (!isOpen) {
+      const searchLayer = document.querySelector("[data-mobile-search-layer]");
+      const searchButton = document.querySelector("[data-mobile-search-open]");
+      searchLayer?.classList.remove("is-open");
+      searchLayer?.setAttribute("aria-hidden", "true");
+      searchButton?.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("is-search-open");
+    }
+
     button.setAttribute("aria-expanded", String(!isOpen));
     button.setAttribute("aria-label", isOpen ? getTranslation("header.menuOpen") : getTranslation("header.menuClose"));
     menu.classList.toggle("is-open", !isOpen);
@@ -433,6 +652,8 @@ function initMobileMenu() {
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
+
+  dim?.addEventListener("click", closeMenu);
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMenu();
@@ -444,12 +665,27 @@ function initHeroSwiper() {
   if (!window.Swiper || !container) return;
 
   const syncVideos = (swiper) => {
+    const activeSlide = swiper.slides[swiper.activeIndex];
+
     swiper.el.querySelectorAll(".swiper-slide video").forEach((video) => {
-      const isActive = video.closest(".swiper-slide")?.classList.contains("swiper-slide-active");
+      const isActive = video.closest(".swiper-slide") === activeSlide;
 
       if (isActive) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
+        video.muted = true;
+        video.playsInline = true;
+
+        const playActiveVideo = () => {
+          if (video.closest(".swiper-slide") === swiper.slides[swiper.activeIndex]) {
+            video.play().catch(() => {});
+          }
+        };
+
+        if (video.readyState >= 2) {
+          playActiveVideo();
+        } else {
+          video.addEventListener("canplay", playActiveVideo, { once: true });
+          video.load();
+        }
       } else {
         video.pause();
       }
@@ -475,9 +711,60 @@ function initHeroSwiper() {
     },
     on: {
       init: syncVideos,
-      slideChange(swiper) {
+      activeIndexChange(swiper) {
+        syncVideos(swiper);
+      },
+      slideChangeTransitionStart(swiper) {
+        syncVideos(swiper);
+      },
+      slideChangeTransitionEnd(swiper) {
         syncVideos(swiper);
       }
+    }
+  });
+}
+
+function initMobileSearchLayer() {
+  const openButton = document.querySelector("[data-mobile-search-open]");
+  const closeButton = document.querySelector("[data-mobile-search-close]");
+  const layer = document.querySelector("[data-mobile-search-layer]");
+  const input = document.querySelector("[data-mobile-search-input]");
+
+  if (!openButton || !closeButton || !layer) return;
+
+  const closeSearchLayer = () => {
+    openButton.setAttribute("aria-expanded", "false");
+    layer.classList.remove("is-open");
+    layer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-search-open");
+  };
+
+  const openSearchLayer = () => {
+    const menuButton = document.querySelector(SELECTORS.menuButton);
+    const mobileMenu = document.querySelector(SELECTORS.mobileMenu);
+
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.setAttribute("aria-label", getTranslation("header.menuOpen"));
+    mobileMenu?.classList.remove("is-open");
+    document.body.classList.remove("is-menu-open");
+
+    openButton.setAttribute("aria-expanded", "true");
+    layer.classList.add("is-open");
+    layer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-search-open");
+    window.requestAnimationFrame(() => input?.focus());
+  };
+
+  openButton.addEventListener("click", openSearchLayer);
+  closeButton.addEventListener("click", closeSearchLayer);
+  layer.addEventListener("click", (event) => {
+    if (event.target === layer) closeSearchLayer();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && layer.classList.contains("is-open")) {
+      closeSearchLayer();
+      openButton.focus();
     }
   });
 }
@@ -1065,6 +1352,27 @@ function initImageFallbacks() {
   });
 }
 
+function initBenefitSwiper() {
+  const container = document.querySelector(SELECTORS.benefitSwiper);
+
+  if (!window.Swiper || !container) return;
+
+  return new Swiper(container, {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    speed: prefersReducedMotion ? 0 : 700,
+    autoplay: prefersReducedMotion ? false : {
+      delay: 4800,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".benefit-swiper__pagination",
+      clickable: true
+    }
+  });
+}
+
 function initHomeWishlist() {
   document.querySelectorAll("[data-wishlist]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1128,19 +1436,31 @@ function initHomeFooter() {
 
     previousMobileState = mobileQuery.matches;
     groups.forEach((group) => {
-      group.open = !mobileQuery.matches;
+      group.open = !mobileQuery.matches || group.hasAttribute("data-footer-always-open");
     });
   };
+
+  groups.forEach((group) => {
+    if (!group.hasAttribute("data-footer-always-open")) return;
+
+    group.addEventListener("toggle", () => {
+      if (mobileQuery.matches && !group.open) group.open = true;
+    });
+  });
 
   syncGroups();
   mobileQuery.addEventListener?.("change", syncGroups);
 }
 
 function initApp() {
+  ensureSharedNavigation();
   initLanguageSwitcher();
   initHeaderSearch();
+  initAccountMenu();
   initMobileMenu();
+  initMobileSearchLayer();
   initHeroSwiper();
+  initBenefitSwiper();
   initTrendSwiper();
   initCategoryHeroSwiper();
   initEventInteraction();
