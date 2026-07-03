@@ -1359,15 +1359,20 @@ function initBenefitSwiper() {
 
   return new Swiper(container, {
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 0,
+    autoHeight: true,
     loop: true,
     speed: prefersReducedMotion ? 0 : 700,
+    grabCursor: true,
+    keyboard: {
+      enabled: true
+    },
     autoplay: prefersReducedMotion ? false : {
       delay: 4800,
       disableOnInteraction: false
     },
     pagination: {
-      el: ".benefit-swiper__pagination",
+      el: container.querySelector(".section-promo__pagination"),
       clickable: true
     }
   });

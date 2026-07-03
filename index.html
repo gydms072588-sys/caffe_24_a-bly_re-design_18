@@ -468,41 +468,32 @@
       </div>
     </section>
 
-    <section class="home-promotion benefit-section" id="promotion" aria-label="쇼핑 혜택">
-      <div class="home-container">
-        <div class="swiper benefit-swiper" data-benefit-swiper aria-label="쇼핑 혜택 배너">
-          <div class="swiper-wrapper">
-          <a class="swiper-slide benefit-banner benefit-banner--welcome" href="signup.html">
-            <span class="benefit-banner__text">
-              <small>에이블리가 처음이라면?</small>
-              <strong>신규 회원가입 혜택</strong>
-              <span>첫 쇼핑을 위한 웰컴 쿠폰을 받아보세요.</span>
-              <em>혜택 확인하기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></em>
-            </span>
-            <span class="benefit-banner__visual" aria-hidden="true">
-              <span class="benefit-coupon-envelope">
-                <span class="benefit-coupon-card"><small>WELCOME COUPON</small><strong>10,000</strong><em>COUPON</em></span>
-              </span>
-            </span>
-          </a>
+    <section class="section-promo" id="promotion" aria-label="지금 진행 중인 혜택">
+      <div class="section-promo__inner">
+        <div class="swiper section-promo__swiper" data-benefit-swiper aria-label="프로모션 배너">
+          <div class="swiper-wrapper section-promo__list">
+            <a class="swiper-slide section-promo__banner" href="#" aria-label="브랜드 블프 오픈 타임어택 최저가">
+              <picture>
+                <source media="(max-width: 767px)" srcset="assets/Banner/section3-brand-mobile.png">
+                <img src="assets/Banner/section3-brand-pc.png" alt="브랜드 블프 오픈 타임어택 최저가">
+              </picture>
+            </a>
 
-          <a class="swiper-slide benefit-banner benefit-banner--shipping" href="category.html">
-            <span class="benefit-banner__text">
-              <small>오늘만 열리는 쇼핑 혜택</small>
-              <strong>무료배송 기획전</strong>
-              <span>부담 없이 둘러보는 오늘의 추천 아이템</span>
-              <em>추천 상품 보기 <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></em>
-            </span>
-            <span class="benefit-banner__visual" aria-hidden="true">
-              <span class="benefit-shipping-card">
-                <span class="material-symbols-outlined">inventory_2</span>
-                <strong>FREE SHIPPING</strong>
-                <span><span class="material-symbols-outlined">check_circle</span> 오늘의 무료배송</span>
-              </span>
-            </span>
-          </a>
+            <a class="swiper-slide section-promo__banner" href="#" aria-label="엄마를 자랑하고 100만원 받아가세요">
+              <picture>
+                <source media="(max-width: 767px)" srcset="assets/Banner/section3-mom-mobile.png">
+                <img src="assets/Banner/section3-mom-pc.png" alt="엄마를 자랑하고 100만원 받아가세요">
+              </picture>
+            </a>
+
+            <a class="swiper-slide section-promo__banner" href="#" aria-label="인기 과자만 모아 30% 할인">
+              <picture>
+                <source media="(max-width: 767px)" srcset="assets/Banner/section3-snack-mobile.png">
+                <img src="assets/Banner/section3-snack-pc.png" alt="인기 과자만 모아 30% 할인">
+              </picture>
+            </a>
           </div>
-          <div class="swiper-pagination benefit-swiper__pagination" aria-label="혜택 배너 페이지"></div>
+          <div class="swiper-pagination section-promo__pagination" aria-label="프로모션 배너 페이지"></div>
         </div>
       </div>
     </section>

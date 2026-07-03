@@ -592,6 +592,60 @@
   color: #fff;
 }
 
+.section-promo {
+  padding: 40px 0 104px;
+}
+
+.section-promo__inner {
+  width: min(calc(100% - 48px), 1440px);
+  margin-inline: auto;
+}
+
+.section-promo__swiper {
+  padding-bottom: 32px;
+}
+
+.section-promo__banner,
+.section-promo__banner picture,
+.section-promo__banner img {
+  display: block;
+  width: 100%;
+}
+
+.section-promo__banner img {
+  height: auto;
+}
+
+.section-promo__pagination {
+  bottom: 0 !important;
+}
+
+.section-promo__pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px !important;
+  background: #cfc9cb;
+  opacity: 1;
+}
+
+.section-promo__pagination .swiper-pagination-bullet-active {
+  background: var(--home-pink);
+}
+
+@media (max-width: 767px) {
+  .section-promo {
+    padding: 32px 0 64px;
+  }
+
+  .section-promo__inner {
+    width: calc(100% - 32px);
+  }
+
+  .section-promo__swiper {
+    padding-bottom: 26px;
+  }
+}
+
 .home-promotion {
   width: min(100%, 1440px);
   height: 440px;
@@ -1300,40 +1354,6 @@
 
 /* Keep main-only responsive rules above the legacy shared breakpoints. */
 @media (max-width: 980px) {
-  .home-page .home-header__inner {
-    grid-template-columns: auto auto;
-    justify-content: space-between;
-    min-height: 62px;
-  }
-
-  .home-page .home-header .site-header__nav,
-  .home-page .home-header .search-form {
-    display: none;
-  }
-
-  .home-page .home-header .language-switcher {
-    display: inline-grid;
-  }
-
-  .home-page .home-header .menu-button {
-    display: inline-grid;
-    place-items: center;
-  }
-
-  .home-page .home-header .menu-button .material-symbols-outlined,
-  .home-page .home-header .menu-button[aria-expanded="true"] .material-symbols-outlined {
-    width: auto;
-    height: auto;
-    margin: 0;
-    transform: none;
-    border-radius: 0;
-    background: transparent;
-    color: #1f1f1f;
-    font-size: 24px;
-    line-height: 1;
-    opacity: 1;
-  }
-
   .home-page .mobile-nav {
     max-height: calc(100svh - var(--header-height));
     overflow-y: auto;
@@ -2517,30 +2537,36 @@ body.is-search-open {
 @media (max-width: 980px) {
   .home-page .home-header__inner {
     position: relative;
-    grid-template-columns: 44px minmax(0, 1fr) auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 10px;
+    min-height: var(--header-height);
   }
 
   .home-page .home-header__inner > .menu-button {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
+    z-index: 1;
+    display: inline-grid;
+    flex: 0 0 42px;
+    place-items: center;
   }
 
   .home-page .home-header__inner > .site-header__logo {
     position: absolute;
     top: 50%;
     left: 50%;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
+    z-index: 2;
     transform: translate(-50%, -50%);
   }
 
+  .home-page .home-header__inner > .site-header__logo img {
+    width: 74px;
+    height: auto;
+  }
+
   .home-page .home-header__inner > .home-header__tools {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
+    z-index: 1;
+    margin-left: auto;
   }
 
   .home-page .home-header .account-menu,
@@ -2561,6 +2587,20 @@ body.is-search-open {
   .home-page .home-header .menu-button {
     width: 42px;
     height: 42px;
+  }
+
+  .home-page .home-header .menu-button .material-symbols-outlined,
+  .home-page .home-header .menu-button[aria-expanded="true"] .material-symbols-outlined {
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: none;
+    border-radius: 0;
+    background: transparent;
+    color: #1f1f1f;
+    font-size: 24px;
+    line-height: 1;
+    opacity: 1;
   }
 
   .home-page .mobile-nav {
@@ -2854,5 +2894,41 @@ body.is-search-open {
     color: #9b9390;
     font-size: 14px;
     text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-category__scroller {
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 8px;
+    margin-right: 0;
+    padding-right: 0;
+    scroll-snap-type: none;
+  }
+
+  .home-category__item {
+    flex: 0 0 calc((100% - 24px) / 4);
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+    scroll-snap-align: none;
+  }
+
+  .home-category__thumb {
+    width: 64px;
+    height: 64px;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 64px;
+    border-radius: 50%;
+  }
+
+  .home-category__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
 }
