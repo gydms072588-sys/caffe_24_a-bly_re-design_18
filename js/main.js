@@ -1045,7 +1045,7 @@ function initGsapAnimations() {
     }
   });
 
-  if (document.querySelector(".product-card")) {
+  if (document.querySelector(".product-card") && !document.body.classList.contains("products-page")) {
     gsap.from(".product-card", {
       y: 38,
       opacity: 0,
