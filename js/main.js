@@ -257,7 +257,7 @@ function ensureSharedNavigation() {
               <li><a href="category.html?cate=life">라이프</a></li>
             </ul>
           </li>
-          <li class="gnb__item"><a class="gnb__link" href="index.html#promotion">타임특가</a></li>
+          <li class="gnb__item"><a class="gnb__link" href="category.html?view=timedeal">타임특가</a></li>
           <li class="gnb__item"><a class="gnb__link" href="index.html#reviews">리뷰</a></li>
           <li class="gnb__item gnb__item--dropdown">
             <a class="gnb__link" href="board-list.html" aria-haspopup="true">커뮤니티</a>
@@ -339,7 +339,7 @@ function ensureSharedNavigation() {
             <a href="category.html?cate=fashion">패션</a><a href="category.html?cate=shoes">신발</a><a href="category.html?cate=beauty">뷰티</a><a href="category.html?cate=life">라이프</a>
           </div>
         </div>
-        <a href="index.html#promotion">타임특가</a>
+        <a href="category.html?view=timedeal">타임특가</a>
         <a href="index.html#reviews">리뷰</a>
         <div class="mobile-nav__group">
           <button class="mobile-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-community-submenu" data-mobile-submenu-toggle>

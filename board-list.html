@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
+<body class="community-page">
   <a class="skip-link" href="#main">본문 바로가기</a>
   <header class="site-header" data-header>
     <div class="site-header__inner">
@@ -96,19 +96,56 @@
       </div>
     </nav>
   </header>
-  <main id="main" class="shop-page board-page">
-    <section class="shop-title"><p class="shop-eyebrow">Community</p><h1>공지 / 이벤트</h1></section>
-    <nav class="board-tabs" aria-label="게시판 카테고리"><a class="is-active" href="#">NOTICE</a><a href="#">EVENT</a><a href="#">REVIEW</a><a href="#">Q&amp;A</a></nav>
-    <section class="board-list-wrap" aria-label="게시글 목록">
-      <div class="board-table">
-        <div class="board-row board-row--head"><span>번호</span><span>분류</span><span>제목</span><span>작성자</span><span>날짜</span><span>조회</span></div>
-        <a class="board-row" href="board-view.html"><span>공지</span><span>EVENT</span><strong>신규회원 쿠폰팩 지급 안내</strong><span>ABLY</span><time>2026-06-19</time><span>1,284</span></a>
-        <a class="board-row" href="board-view.html"><span>12</span><span>NOTICE</span><strong>여름 데일리룩 무료배송 기획전</strong><span>ABLY</span><time>2026-06-18</time><span>932</span></a>
-        <a class="board-row" href="board-view.html"><span>11</span><span>REVIEW</span><strong>베스트 상품 리뷰 이벤트</strong><span>ABLY</span><time>2026-06-17</time><span>502</span></a>
-        <a class="board-row" href="board-view.html"><span>10</span><span>Q&amp;A</span><strong>재입고 알림 신청 방법</strong><span>ABLY</span><time>2026-06-16</time><span>418</span></a>
+  <main id="main" class="community-main">
+    <header class="community-heading">
+      <p>COMMUNITY</p>
+      <h1 data-community-title>공지사항</h1>
+    </header>
+
+    <nav class="community-tabs" aria-label="커뮤니티 게시판">
+      <a class="is-active" href="board-list.html?board=notice" data-community-tab="notice">공지사항</a>
+      <a href="board-list.html?board=review" data-community-tab="review">상품 사용후기</a>
+      <a href="board-list.html?board=qa" data-community-tab="qa">상품 Q&amp;A</a>
+      <a href="board-list.html?board=faq" data-community-tab="faq">이용안내 FAQ</a>
+      <a href="board-list.html?board=event" data-community-tab="event">이벤트</a>
+    </nav>
+
+    <section class="community-board" aria-label="게시글 목록">
+      <div class="community-table" role="table">
+        <div class="community-row community-row--head" role="row">
+          <span role="columnheader">NO</span>
+          <span role="columnheader">제목</span>
+          <span role="columnheader">작성자</span>
+          <span role="columnheader">작성일</span>
+          <span role="columnheader">조회</span>
+        </div>
+        <a class="community-row" href="board-view.html" role="row">
+          <span role="cell" data-label="NO">공지</span><strong role="cell">신규회원 쿠폰팩 지급 안내</strong><span role="cell" data-label="작성자">ABLY</span><time role="cell" data-label="작성일" datetime="2026-06-19">2026-06-19</time><span role="cell" data-label="조회">1,284</span>
+        </a>
+        <a class="community-row" href="board-view.html" role="row">
+          <span role="cell" data-label="NO">12</span><strong role="cell">여름 데일리룩 무료배송 기획전</strong><span role="cell" data-label="작성자">ABLY</span><time role="cell" data-label="작성일" datetime="2026-06-18">2026-06-18</time><span role="cell" data-label="조회">932</span>
+        </a>
+        <a class="community-row" href="board-view.html" role="row">
+          <span role="cell" data-label="NO">11</span><strong role="cell">베스트 상품 리뷰 이벤트</strong><span role="cell" data-label="작성자">ABLY</span><time role="cell" data-label="작성일" datetime="2026-06-17">2026-06-17</time><span role="cell" data-label="조회">502</span>
+        </a>
+        <a class="community-row" href="board-view.html" role="row">
+          <span role="cell" data-label="NO">10</span><strong role="cell">재입고 알림 신청 방법</strong><span role="cell" data-label="작성자">ABLY</span><time role="cell" data-label="작성일" datetime="2026-06-16">2026-06-16</time><span role="cell" data-label="조회">418</span>
+        </a>
       </div>
-      <div class="board-tools"><form><select aria-label="검색 분류"><option>제목</option><option>내용</option></select><input type="search" placeholder="검색어 입력"><button type="button">검색</button></form><a class="button button--primary" href="board-write.html">글쓰기</a></div>
-      <div class="pagination" aria-label="페이지네이션"><a href="#" class="is-active">1</a><a href="#">2</a><a href="#">3</a><a href="#">다음</a></div>
+
+      <nav class="community-pagination" aria-label="페이지네이션">
+        <a href="#" aria-label="이전 페이지"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></a>
+        <a class="is-active" href="#" aria-current="page">1</a>
+        <a href="#" aria-label="다음 페이지"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></a>
+      </nav>
+
+      <form class="community-search" role="search">
+        <select aria-label="검색 기간"><option>일주일</option><option>한달</option><option>전체</option></select>
+        <select aria-label="검색 분류"><option>제목</option><option>내용</option><option>제목+내용</option></select>
+        <label class="sr-only" for="community-search-input">게시글 검색어</label>
+        <input id="community-search-input" type="search">
+        <button type="submit">검색</button>
+      </form>
     </section>
   </main>
 <footer class="site-footer home-footer">
@@ -163,5 +200,6 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script src="js/community.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
+<body class="product-detail-body">
   <a class="skip-link" href="#main">본문 바로가기</a>
   <header class="site-header" data-header>
     <div class="site-header__inner">
@@ -97,85 +97,149 @@
     </nav>
   </header>
 
-  <main id="main" class="shop-page detail-page">
-    <nav class="shop-breadcrumb" aria-label="breadcrumb">
-      <a href="index.html">홈</a><span>/</span><a href="category.html">상의</a><span>/</span><strong>Airy Cotton Blouse</strong>
+  <main id="main" class="product-detail-page">
+    <nav class="product-detail-breadcrumb" aria-label="breadcrumb">
+      <a href="index.html">홈</a><span>/</span><a href="category.html">상의</a><span>/</span><strong>Soft Pintuck Blouse</strong>
     </nav>
 
-    <section class="detail-hero" aria-labelledby="detail-title">
-      <div class="detail-gallery">
-        <figure class="detail-gallery__main"><img src="assets/images/category/product_01.jpg" alt="Airy Cotton Blouse 착용 이미지"></figure>
-        <div class="detail-gallery__thumbs" aria-label="상품 이미지 목록">
-          <button type="button" aria-label="상품 이미지 1"><img src="assets/images/category/product_01.jpg" alt=""></button>
+    <section class="product-detail-top" aria-labelledby="product-detail-title">
+      <div class="product-detail-gallery">
+        <figure class="product-detail-gallery__main">
+          <img src="assets/images/category/product_01.jpg" alt="Soft Pintuck Blouse 착용 이미지">
+        </figure>
+        <div class="product-detail-gallery__thumbs" aria-label="상품 이미지 목록">
+          <button class="is-active" type="button" aria-label="상품 이미지 1"><img src="assets/images/category/product_01.jpg" alt=""></button>
           <button type="button" aria-label="상품 이미지 2"><img src="assets/images/category/product_02.jpg" alt=""></button>
           <button type="button" aria-label="상품 이미지 3"><img src="assets/images/trend/trend_item_01.png" alt=""></button>
+          <button type="button" aria-label="상품 이미지 4"><img src="assets/images/category/product_03.jpg" alt=""></button>
         </div>
       </div>
 
-      <div class="detail-summary">
-        <p class="shop-eyebrow">Daily Muse</p>
-        <h1 id="detail-title">Airy Cotton Blouse</h1>
-        <p class="detail-summary__desc">가볍게 흐르는 핏과 은은한 핑크 무드로 데일리룩부터 출근룩까지 자연스럽게 어울리는 블라우스입니다.</p>
-        <div class="detail-price"><strong>29,800원</strong><del>42,000원</del><span>29%</span></div>
-        <div class="detail-badges"><span>무료배송</span><span>BEST</span><span>당일출고</span></div>
-
-        <div class="option-group">
-          <p>Color</p>
-          <div class="swatch-list" aria-label="색상 선택">
-            <button type="button" class="is-active" style="--swatch:#f7c8d0" aria-label="Pink"></button>
-            <button type="button" style="--swatch:#f6eee9" aria-label="Cream"></button>
-            <button type="button" style="--swatch:#202020" aria-label="Black"></button>
+      <div class="product-detail-purchase">
+        <div class="product-detail-timedeal"><strong>TIME DEAL</strong><span data-timedeal-countdown data-countdown-seconds="31339">남은 시간 08:42:19</span></div>
+        <div class="product-detail-heading">
+          <div>
+            <p class="product-detail-brand">Luelle</p>
+            <h1 id="product-detail-title">Soft Pintuck Blouse</h1>
+          </div>
+          <div class="product-detail-heading__actions">
+            <button class="product-detail-like" type="button" aria-label="관심상품"><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
+            <button class="product-detail-share" type="button" aria-label="상품 공유"><span class="material-symbols-outlined" aria-hidden="true">share</span></button>
           </div>
         </div>
+        <p class="product-detail-description">은은한 핑크 베이지 무드로 완성하는 데일리 블라우스</p>
 
-        <div class="option-group">
-          <p>Size</p>
-          <div class="size-list" aria-label="사이즈 선택">
-            <button type="button">S</button><button type="button" class="is-active">M</button><button type="button">L</button>
+        <div class="product-detail-price">
+          <del>42,000원</del>
+          <div><strong>29,800원</strong><span>29%</span></div>
+        </div>
+
+        <dl class="product-detail-delivery">
+          <div><dt>배송 구분</dt><dd>국내 · 해외배송</dd></div>
+          <div><dt>국내배송</dt><dd>국내배송</dd></div>
+          <div><dt>배송방법</dt><dd>택배</dd></div>
+          <div><dt>배송비</dt><dd><strong>무료배송</strong></dd></div>
+        </dl>
+
+        <div class="product-detail-options" data-product-options>
+          <label>옵션 1
+            <select aria-label="색상 선택" data-product-option="color"><option value="">색상을 선택해주세요</option><option value="핑크">핑크</option><option value="아이보리">아이보리</option><option value="블랙">블랙</option></select>
+          </label>
+          <label>옵션 2
+            <select aria-label="사이즈 선택" data-product-option="size"><option value="">사이즈를 선택해주세요</option><option value="S">S</option><option value="M">M</option><option value="L">L</option></select>
+          </label>
+          <label>추가옵션
+            <select aria-label="추가 옵션 선택" data-product-option="extra"><option value="">추가옵션을 선택해주세요</option><option value="선물 포장" data-extra-price="3000">선물 포장 (+3,000원)</option><option value="선택 안 함" data-extra-price="0">선택 안 함</option></select>
+          </label>
+        </div>
+
+        <div class="product-detail-selected" data-product-selected aria-live="polite">
+          <p class="product-detail-selected__empty">옵션을 모두 선택하면 수량을 변경할 수 있습니다.</p>
+        </div>
+
+        <div class="product-detail-arrival">
+          <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+          <div><strong>배송 도착예정</strong><p>오늘 주문 시 7월 8일(수) 도착 예정</p></div>
+        </div>
+
+        <aside class="product-detail-benefits" aria-labelledby="product-detail-benefits-title">
+          <h2 id="product-detail-benefits-title">카드 혜택</h2>
+          <ul>
+            <li><strong>무이자 할부</strong><span>주요 카드사 최대 6개월</span></li>
+            <li><strong>첫 구매 혜택</strong><span>앱 전용 10% 할인 쿠폰</span></li>
+          </ul>
+        </aside>
+
+        <div class="product-detail-actions">
+          <a class="product-detail-button product-detail-button--primary" href="cart.html?mode=buy-now" data-product-submit="buy-now">구매하기</a>
+          <a class="product-detail-button product-detail-button--secondary" href="cart.html" data-product-submit="cart">장바구니 담기</a>
+        </div>
+        <div class="product-detail-total" data-unit-price="29800">
+          <div class="product-detail-total__summary" data-product-summary>
+            <p class="product-detail-total__empty">선택된 옵션이 없습니다</p>
           </div>
+          <strong data-product-total>0원</strong>
         </div>
-
-        <div class="quantity-row">
-          <span>수량</span>
-          <div class="quantity-control"><button type="button">-</button><strong>1</strong><button type="button">+</button></div>
-        </div>
-
-        <div class="detail-actions">
-          <a class="button button--primary" href="#">구매하기</a>
-          <a class="button button--ghost" href="cart.html">장바구니</a>
-          <button class="icon-like" type="button" aria-label="관심상품"><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
-        </div>
-
-        <ul class="delivery-note">
-          <li><strong>배송</strong><span>무료배송 / 평균 2~3일 소요</span></li>
-          <li><strong>혜택</strong><span>앱 첫 구매 쿠폰, 리뷰 적립금 지급</span></li>
-        </ul>
       </div>
     </section>
 
-    <section class="detail-tabs" aria-label="상품 상세 정보">
-      <div class="tab-bar"><a href="#detail-info">상세정보</a><a href="#detail-size">사이즈</a><a href="#detail-review">리뷰</a><a href="#detail-qna">문의</a></div>
-      <article id="detail-info" class="detail-panel">
-        <h2>부드러운 일상 블라우스</h2>
-        <p>밝은 톤의 데님, 슬랙스, 스커트와 잘 어울리는 기본 아이템입니다. 카페24 상세 페이지에 상품 설명과 운영 이미지를 이어 붙이기 쉬운 단순한 구조로 구성했습니다.</p>
-        <img src="assets/images/category/category_banner.jpg" alt="블라우스 스타일링 이미지">
+    <section class="product-detail-content" aria-label="상품 상세 정보">
+      <nav class="product-detail-tabs" aria-label="상품 상세 탭">
+        <a class="is-active" href="#product-detail-info">상세정보</a>
+        <a href="#product-detail-review">리뷰 <span>128</span></a>
+      </nav>
+
+      <article id="product-detail-info" class="product-detail-info">
+        <h2 class="sr-only">Soft Pintuck Blouse 상세정보</h2>
+        <div class="product-detail-info__images">
+          <img src="assets/images/products/soft-pintuck/detail-01.jpg" alt="Luelle Soft Pintuck Blouse 상품 소개" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-02.gif" alt="Soft Pintuck Blouse 핑크 컬러 스타일링" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-03.jpg" alt="화이트, 핑크, 블랙 컬러 안내" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-04.jpg" alt="넥라인 셔링, 볼륨 소매와 원단 상세" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-05.jpg" alt="핑크 컬러 앞면과 뒷면" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-06.jpg" alt="블랙 컬러 앞면과 뒷면" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-07.jpg" alt="화이트 컬러 앞면과 뒷면" loading="lazy">
+          <img src="assets/images/products/soft-pintuck/detail-08.jpg" alt="Soft Pintuck Blouse 사이즈와 소재 정보" loading="lazy">
+        </div>
       </article>
-      <article id="detail-size" class="detail-panel detail-table">
-        <h2>사이즈 안내</h2>
-        <table><thead><tr><th>Size</th><th>어깨</th><th>가슴</th><th>총장</th></tr></thead><tbody><tr><td>S</td><td>37</td><td>47</td><td>58</td></tr><tr><td>M</td><td>38</td><td>49</td><td>60</td></tr><tr><td>L</td><td>39</td><td>51</td><td>62</td></tr></tbody></table>
-      </article>
-      <article id="detail-review" class="detail-panel review-list">
-        <h2>리뷰 128</h2>
-        <div><strong>핏이 예쁘고 가벼워요</strong><p>출근룩으로 입기 좋고 색감이 화면 그대로예요.</p></div>
-        <div><strong>봄 여름 데일리템</strong><p>스커트와 매치했을 때 분위기가 부드럽습니다.</p></div>
-      </article>
-      <article id="detail-qna" class="detail-panel board-mini">
-        <h2>상품 문의</h2>
-        <p>배송, 옵션, 재입고 문의를 남길 수 있는 영역입니다.</p>
-        <a class="button button--ghost" href="board-write.html">문의 작성</a>
-      </article>
+
+      <section id="product-detail-review" class="product-detail-reviews" aria-labelledby="product-detail-review-title">
+        <div class="product-detail-reviews__heading">
+          <div><h2 id="product-detail-review-title">리뷰</h2><span>128개의 후기</span></div>
+          <div class="product-detail-review-actions">
+            <a href="board-write.html">상품후기쓰기</a>
+            <a href="board-write.html">문의하기</a>
+          </div>
+        </div>
+        <article class="product-detail-review-card">
+          <div class="product-detail-review-card__profile" aria-hidden="true">A</div>
+          <div class="product-detail-review-card__body">
+            <div class="product-detail-review-card__meta"><strong>김에이블</strong><time datetime="2026-03-06">2026.03.06</time></div>
+            <div class="product-detail-review-card__stars" aria-label="별점 5점 만점에 5점">★★★★★</div>
+            <strong>배송도 빠르고 안전하게 도착했어요.</strong>
+            <p>핏이 가볍고 색감이 사진 그대로라 마음에 들어요. 슬랙스와 함께 입으니 출근룩으로도 자연스럽습니다.</p>
+          </div>
+        </article>
+      </section>
     </section>
   </main>
+
+  <div class="product-detail-mobile-purchase" data-mobile-purchase>
+    <button class="product-detail-mobile-purchase__review" type="button" data-review-scroll>리뷰 보기</button>
+    <button class="product-detail-mobile-purchase__cta" type="button" aria-controls="product-detail-mobile-sheet" aria-expanded="false" data-mobile-sheet-open>상품 구매하기</button>
+  </div>
+  <button class="product-detail-mobile-dim" type="button" aria-label="구매 옵션 닫기" tabindex="-1" data-mobile-sheet-dim></button>
+  <aside class="product-detail-mobile-sheet" id="product-detail-mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="product-detail-mobile-sheet-title" aria-hidden="true" data-mobile-sheet>
+    <div class="product-detail-mobile-sheet__header">
+      <h2 id="product-detail-mobile-sheet-title">상품 옵션 선택</h2>
+      <button class="product-detail-mobile-sheet__close" type="button" aria-label="구매 옵션 닫기" data-mobile-sheet-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+    </div>
+    <div class="product-detail-mobile-sheet__scroll" data-mobile-sheet-content></div>
+  </aside>
+  <nav class="product-detail-desktop-scroll" aria-label="페이지 빠른 이동">
+    <button type="button" aria-label="페이지 위로 이동" data-page-scroll="top"><span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_up</span></button>
+    <button type="button" aria-label="페이지 아래로 이동" data-page-scroll="bottom"><span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span></button>
+  </nav>
 
 <footer class="site-footer home-footer">
     <div class="home-container home-footer__inner">
@@ -229,5 +293,6 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script src="js/product-detail.js"></script>
 </body>
 </html>
