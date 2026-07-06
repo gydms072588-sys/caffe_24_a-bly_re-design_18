@@ -3087,3 +3087,227 @@ body.is-search-open {
     z-index: 4;
   }
 }
+
+/* New-member benefit hero artwork */
+.home-page .home-hero__visual--benefit-motion {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 30%, rgba(255, 255, 255, .96) 0 14%, transparent 42%),
+    linear-gradient(145deg, #f6f6f7 0%, #e9eaec 100%);
+}
+
+.benefit-hero-art {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.benefit-hero-art__layer {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  will-change: transform, opacity;
+  pointer-events: none;
+  user-select: none;
+}
+
+.benefit-hero-art__window {
+  z-index: 1;
+  filter: drop-shadow(0 14px 20px rgba(39, 30, 33, .12));
+}
+
+.benefit-hero-art__window--shoes {
+  top: 7%;
+  left: 13%;
+  width: 47%;
+}
+
+.benefit-hero-art__window--bag {
+  bottom: 7%;
+  left: 18%;
+  width: 48%;
+}
+
+.benefit-hero-art__powder,
+.benefit-hero-art__palette {
+  z-index: 2;
+  filter: drop-shadow(0 15px 18px rgba(69, 40, 51, .15));
+}
+
+.benefit-hero-art__powder {
+  bottom: 3%;
+  left: 2%;
+  width: 29%;
+}
+
+.benefit-hero-art__palette {
+  top: 4%;
+  right: 11%;
+  width: 28%;
+}
+
+.benefit-hero-art__person {
+  right: -1%;
+  bottom: -3%;
+  z-index: 3;
+  width: 51%;
+  max-height: 96%;
+  filter: drop-shadow(-10px 12px 18px rgba(24, 22, 24, .12));
+}
+
+.home-hero .swiper-slide-active .benefit-hero-art__window--shoes {
+  animation: benefit-window-in .72s cubic-bezier(.2, .8, .2, 1) .12s both;
+}
+
+.home-hero .swiper-slide-active .benefit-hero-art__window--bag {
+  animation: benefit-window-in .72s cubic-bezier(.2, .8, .2, 1) .32s both;
+}
+
+.home-hero .swiper-slide-active .benefit-hero-art__powder {
+  animation: benefit-powder-in .8s cubic-bezier(.2, .8, .2, 1) .46s both;
+}
+
+.home-hero .swiper-slide-active .benefit-hero-art__palette {
+  animation: benefit-palette-in .88s cubic-bezier(.2, .8, .2, 1) .56s both;
+}
+
+.home-hero .swiper-slide-active .benefit-hero-art__person {
+  animation: benefit-person-in .9s cubic-bezier(.18, .78, .2, 1) .4s both;
+}
+
+@keyframes benefit-window-in {
+  from {
+    opacity: 0;
+    transform: scale(.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes benefit-person-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes benefit-palette-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px) rotate(7deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes benefit-powder-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .home-page .home-hero__visual--benefit-motion::after {
+    z-index: 4;
+    background: linear-gradient(90deg, rgba(28, 24, 26, .58), rgba(28, 24, 26, .16) 65%, rgba(28, 24, 26, .04));
+  }
+
+  .home-page .home-hero__slide--benefit .home-hero__content {
+    z-index: 5;
+  }
+
+  .benefit-hero-art__window--shoes {
+    top: 5%;
+    left: 7%;
+    width: 56%;
+  }
+
+  .benefit-hero-art__window--bag {
+    bottom: 8%;
+    left: 10%;
+    width: 57%;
+  }
+
+  .benefit-hero-art__powder {
+    bottom: 4%;
+    left: 1%;
+    width: 31%;
+  }
+
+  .benefit-hero-art__palette {
+    top: 4%;
+    right: 6%;
+    width: 31%;
+  }
+
+  .benefit-hero-art__person {
+    right: -5%;
+    bottom: -2%;
+    width: 53%;
+    max-height: 91%;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-page .home-hero__visual--benefit-motion::after {
+    background: linear-gradient(90deg, rgba(26, 22, 24, .64), rgba(26, 22, 24, .2) 72%, rgba(26, 22, 24, .05));
+  }
+
+  .benefit-hero-art__window--shoes {
+    top: 8%;
+    left: 1%;
+    width: 67%;
+  }
+
+  .benefit-hero-art__window--bag {
+    bottom: 11%;
+    left: 3%;
+    width: 69%;
+  }
+
+  .benefit-hero-art__powder {
+    bottom: 4%;
+    left: -4%;
+    width: 39%;
+  }
+
+  .benefit-hero-art__palette {
+    top: 8%;
+    right: -3%;
+    width: 38%;
+  }
+
+  .benefit-hero-art__person {
+    right: -15%;
+    bottom: -1%;
+    width: 67%;
+    max-height: 83%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero .benefit-hero-art__layer {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

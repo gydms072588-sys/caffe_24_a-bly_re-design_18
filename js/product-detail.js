@@ -71,7 +71,7 @@
   const getPayload = () => ({
     product: 'Soft Pintuck Blouse',
     brand: 'Luelle',
-    image: 'assets/images/category/product_01.jpg',
+    image: 'assets/images/products/soft-pintuck/gallery-01.png',
     unitPrice,
     options: Array.from(selectedOptions.values()).map((item) => ({ ...item })),
     totalQuantity: Array.from(selectedOptions.values()).reduce((sum, item) => sum + item.quantity, 0),
