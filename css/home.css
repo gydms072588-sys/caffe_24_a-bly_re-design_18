@@ -9,6 +9,150 @@
   background: #fff;
 }
 
+/* Season event hero rail */
+.home-hero__visual--rail {
+  position: relative;
+  isolation: isolate;
+  background: #f7f1f2;
+}
+
+.season-rail-hero {
+  --season-rail-slot: max(620px, min(calc(100svh - 72px), 760px));
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.season-rail-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.season-rail-hero__track {
+  position: absolute;
+  top: 0;
+  right: auto;
+  left: 50%;
+  z-index: 1;
+  overflow: hidden;
+  width: min(78%, 640px);
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.season-rail-hero__belt {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  will-change: transform;
+  animation: season-rail-scroll 28s linear infinite;
+  animation-play-state: paused;
+}
+
+.home-hero .swiper-slide-active .season-rail-hero__belt {
+  animation-play-state: running;
+}
+
+.home-hero .swiper-slide-active .season-rail-hero:hover .season-rail-hero__belt {
+  animation-play-state: paused;
+}
+
+.season-rail-hero__list {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.season-rail-hero__item {
+  display: grid;
+  width: 100%;
+  height: var(--season-rail-slot);
+  place-items: center;
+  padding: clamp(28px, 5vh, 52px) 0;
+}
+
+.season-rail-hero__basket {
+  display: block;
+  width: min(92%, 570px);
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 28px rgba(38, 28, 31, .16));
+}
+
+@keyframes season-rail-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -50%, 0); }
+}
+
+@media (max-width: 980px) {
+  .season-rail-hero {
+    --season-rail-slot: max(560px, calc(100svh - 62px));
+  }
+
+  .season-rail-hero__track {
+    right: auto;
+    left: 50%;
+    width: 64%;
+  }
+
+  .season-rail-hero__item {
+    padding: 52px 0;
+  }
+
+  .season-rail-hero__basket {
+    width: 100%;
+    max-width: 460px;
+    filter: drop-shadow(0 15px 20px rgba(38, 28, 31, .13));
+  }
+
+  .home-hero__visual--rail::after {
+    z-index: 3;
+    background: linear-gradient(90deg, rgba(20, 16, 18, .6), rgba(20, 16, 18, .28));
+  }
+
+  .home-hero__slide--event .home-hero__content {
+    z-index: 4;
+  }
+}
+
+@media (max-width: 640px) {
+  .season-rail-hero {
+    --season-rail-slot: max(560px, calc(100svh - 58px));
+  }
+
+  .season-rail-hero__track {
+    right: auto;
+    left: 50%;
+    width: 92%;
+  }
+
+  .season-rail-hero__item {
+    padding: 48px 0;
+  }
+
+  .season-rail-hero__basket {
+    max-width: 430px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-rail-hero__belt {
+    animation: none;
+    transform: none;
+  }
+
+  .season-rail-hero__list[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 .home-page .home-container {
   width: min(calc(100% - 48px), var(--home-container));
   margin-inline: auto;
@@ -2930,5 +3074,16 @@ body.is-search-open {
     height: 100%;
     object-fit: contain;
     object-position: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .home-page .home-hero__visual--rail::after {
+    z-index: 3;
+    background: linear-gradient(90deg, rgba(20, 16, 18, .6), rgba(20, 16, 18, .28));
+  }
+
+  .home-page .home-hero__slide--event .home-hero__content {
+    z-index: 4;
   }
 }
